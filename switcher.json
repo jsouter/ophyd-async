@@ -4,7 +4,7 @@
     "url": "https://bluesky.github.io/ophyd-async/main/"
   },
   {
-    "version": "restructure",
-    "url": "https://bluesky.github.io/ophyd-async/restructure/"
+    "version": "adr",
+    "url": "https://bluesky.github.io/ophyd-async/adr/"
   }
 ]
