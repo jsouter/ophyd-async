@@ -4,7 +4,7 @@
     "url": "https://bluesky.github.io/ophyd-async/main/"
   },
   {
-    "version": "adr",
-    "url": "https://bluesky.github.io/ophyd-async/adr/"
+    "version": "dependabot_github_actions_actions_checkout-4",
+    "url": "https://bluesky.github.io/ophyd-async/dependabot_github_actions_actions_checkout-4/"
   }
 ]
