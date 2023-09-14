@@ -2,5 +2,9 @@
   {
     "version": "main",
     "url": "https://bluesky.github.io/ophyd-async/main/"
+  },
+  {
+    "version": "adr",
+    "url": "https://bluesky.github.io/ophyd-async/adr/"
   }
 ]
