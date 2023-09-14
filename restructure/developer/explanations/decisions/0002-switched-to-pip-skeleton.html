@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2. Adopt ophyd_async for project structure &#8212; ophyd_async 0.1.dev391+g8872371 documentation</title>
+    <title>2. Adopt ophyd-async for project structure &#8212; ophyd-async 0.1.dev392+gdd5b4d3 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
-    <script src="../../../_static/documentation_options.js?v=568be08b"></script>
+    <script src="../../../_static/documentation_options.js?v=1c4e544b"></script>
     <script src="../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -199,7 +199,7 @@ document.write(`
           
           
           
-          <a href="https://github.com/bluesky/ophyd_async" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+          <a href="https://github.com/bluesky/ophyd-async" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
             <label class="sr-only">GitHub</label></a>
         </li>
         <li class="nav-item">
@@ -211,7 +211,7 @@ document.write(`
           
           
           
-          <a href="https://pypi.org/project/ophyd_async" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fas fa-cube"></i></span>
+          <a href="https://pypi.org/project/ophyd-async" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fas fa-cube"></i></span>
             <label class="sr-only">PyPI</label></a>
         </li>
         <li class="nav-item">
@@ -325,7 +325,7 @@ document.write(`
           
           
           
-          <a href="https://github.com/bluesky/ophyd_async" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+          <a href="https://github.com/bluesky/ophyd-async" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
             <label class="sr-only">GitHub</label></a>
         </li>
         <li class="nav-item">
@@ -337,7 +337,7 @@ document.write(`
           
           
           
-          <a href="https://pypi.org/project/ophyd_async" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fas fa-cube"></i></span>
+          <a href="https://pypi.org/project/ophyd-async" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fas fa-cube"></i></span>
             <label class="sr-only">PyPI</label></a>
         </li>
         <li class="nav-item">
@@ -382,7 +382,7 @@ document.write(`
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../decisions.html">Architectural Decision Records</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="0001-record-architecture-decisions.html">1. Record architecture decisions</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">2. Adopt ophyd_async for project structure</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2. Adopt ophyd-async for project structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="0003-ophyd-async-migration.html">3. Ophyd Async migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="0004-repository-structure.html">4. Repository Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="0005-respect-black-line-length.html">5. Respect black line length</a></li>
@@ -435,7 +435,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="../decisions.html" class="nav-link">Architectural Decision Records</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">2. Adopt ophyd_async for project structure</li>
+    <li class="breadcrumb-item active" aria-current="page">2. Adopt ophyd-async for project structure</li>
   </ul>
 </nav>
 </div>
@@ -453,7 +453,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section id="adopt-ophyd-async-for-project-structure">
-<h1>2. Adopt ophyd_async for project structure<a class="headerlink" href="#adopt-ophyd-async-for-project-structure" title="Link to this heading">#</a></h1>
+<h1>2. Adopt ophyd-async for project structure<a class="headerlink" href="#adopt-ophyd-async-for-project-structure" title="Link to this heading">#</a></h1>
 <p>Date: 2022-02-18</p>
 <section id="status">
 <h2>Status<a class="headerlink" href="#status" title="Link to this heading">#</a></h2>
@@ -461,7 +461,7 @@ document.write(`
 </section>
 <section id="context">
 <h2>Context<a class="headerlink" href="#context" title="Link to this heading">#</a></h2>
-<p>We should use the following <a class="reference external" href="https://github.com/bluesky/ophyd_async">pip-skeleton</a>.
+<p>We should use the following <a class="reference external" href="https://github.com/bluesky/ophyd-async">pip-skeleton</a>.
 The skeleton will ensure consistency in developer
 environments and package management.</p>
 </section>
@@ -471,7 +471,7 @@ environments and package management.</p>
 </section>
 <section id="consequences">
 <h2>Consequences<a class="headerlink" href="#consequences" title="Link to this heading">#</a></h2>
-<p>This module will use a fixed set of tools as developed in ophyd_async
+<p>This module will use a fixed set of tools as developed in ophyd-async
 and can pull from this skeleton to update the packaging to the latest techniques.</p>
 <p>As such, the developer environment may have changed, the following could be
 different:</p>
@@ -541,7 +541,7 @@ different:</p>
   <div class="sidebar-secondary-item">
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/bluesky/ophyd_async/edit/master/docs/developer/explanations/decisions/0002-switched-to-pip-skeleton.rst">
+    <a href="https://github.com/bluesky/ophyd-async/edit/master/docs/developer/explanations/decisions/0002-switched-to-pip-skeleton.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
