@@ -4,6 +4,14 @@
     "url": "https://bluesky.github.io/ophyd-async/main/"
   },
   {
+    "version": "add_children_property_to_device",
+    "url": "https://bluesky.github.io/ophyd-async/add_children_property_to_device/"
+  },
+  {
+    "version": "dependabot_github_actions_actions_checkout-4",
+    "url": "https://bluesky.github.io/ophyd-async/dependabot_github_actions_actions_checkout-4/"
+  },
+  {
     "version": "dependabot_github_actions_softprops_action-gh-release-0.1.15",
     "url": "https://bluesky.github.io/ophyd-async/dependabot_github_actions_softprops_action-gh-release-0.1.15/"
   }
