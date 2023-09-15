@@ -21,6 +21,7 @@ ophyd\_async.epics.areadetector.NDPluginStats
    .. autosummary::
       :nosignatures:
    
+      ~NDPluginStats.children
       ~NDPluginStats.connect
       ~NDPluginStats.set_name
    

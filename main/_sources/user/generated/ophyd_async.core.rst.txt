@@ -26,9 +26,6 @@ ophyd\_async.core
       set_sim_put_proceeds
       set_sim_value
       wait_for_value
-      connect_children
-      get_device_children
-      name_children
       get_dtype
       get_unique
       merge_gathered_dicts

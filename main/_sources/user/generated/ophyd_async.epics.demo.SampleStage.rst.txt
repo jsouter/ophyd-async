@@ -21,6 +21,7 @@ ophyd\_async.epics.demo.SampleStage
    .. autosummary::
       :nosignatures:
    
+      ~SampleStage.children
       ~SampleStage.connect
       ~SampleStage.set_name
    

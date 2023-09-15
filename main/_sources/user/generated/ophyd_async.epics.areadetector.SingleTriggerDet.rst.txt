@@ -21,6 +21,7 @@ ophyd\_async.epics.areadetector.SingleTriggerDet
    .. autosummary::
       :nosignatures:
    
+      ~SingleTriggerDet.children
       ~SingleTriggerDet.connect
       ~SingleTriggerDet.describe
       ~SingleTriggerDet.describe_configuration

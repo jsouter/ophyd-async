@@ -21,6 +21,7 @@ ophyd\_async.core.StandardReadable
    .. autosummary::
       :nosignatures:
    
+      ~StandardReadable.children
       ~StandardReadable.connect
       ~StandardReadable.describe
       ~StandardReadable.describe_configuration

@@ -21,6 +21,7 @@ ophyd\_async.panda.PcapBlock
    .. autosummary::
       :nosignatures:
    
+      ~PcapBlock.children
       ~PcapBlock.connect
       ~PcapBlock.set_name
    

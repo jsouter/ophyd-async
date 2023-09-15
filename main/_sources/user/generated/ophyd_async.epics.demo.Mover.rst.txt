@@ -21,6 +21,7 @@ ophyd\_async.epics.demo.Mover
    .. autosummary::
       :nosignatures:
    
+      ~Mover.children
       ~Mover.connect
       ~Mover.describe
       ~Mover.describe_configuration

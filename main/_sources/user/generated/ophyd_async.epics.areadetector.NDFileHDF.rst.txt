@@ -21,6 +21,7 @@ ophyd\_async.epics.areadetector.NDFileHDF
    .. autosummary::
       :nosignatures:
    
+      ~NDFileHDF.children
       ~NDFileHDF.connect
       ~NDFileHDF.set_name
    

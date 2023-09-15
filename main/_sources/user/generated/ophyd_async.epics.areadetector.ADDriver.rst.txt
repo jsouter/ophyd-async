@@ -21,6 +21,7 @@ ophyd\_async.epics.areadetector.ADDriver
    .. autosummary::
       :nosignatures:
    
+      ~ADDriver.children
       ~ADDriver.connect
       ~ADDriver.set_name
    

@@ -21,6 +21,7 @@ ophyd\_async.panda.PulseBlock
    .. autosummary::
       :nosignatures:
    
+      ~PulseBlock.children
       ~PulseBlock.connect
       ~PulseBlock.set_name
    

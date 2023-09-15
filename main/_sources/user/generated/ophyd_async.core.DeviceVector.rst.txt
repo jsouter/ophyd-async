@@ -21,6 +21,7 @@ ophyd\_async.core.DeviceVector
    .. autosummary::
       :nosignatures:
    
+      ~DeviceVector.children
       ~DeviceVector.clear
       ~DeviceVector.connect
       ~DeviceVector.copy

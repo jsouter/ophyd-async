@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>ophyd_async.core.DeviceVector &#8212; ophyd-async 0.1.dev384+g5bf9236 documentation</title>
+    <title>ophyd_async.core.DeviceVector &#8212; ophyd-async 0.1.dev387+g1d79731 documentation</title>
   
   
   
@@ -18,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -35,10 +35,11 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
 
-    <script src="../../_static/documentation_options.js?v=ed6d879d"></script>
+    <script src="../../_static/documentation_options.js?v=53159e14"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -60,6 +61,15 @@
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -100,7 +110,8 @@
     <span class="fa-solid fa-bars"></span>
   </label>
   
-  <div class="navbar-header-items__start">
+  
+  <div class="col-lg-3 navbar-header-items__start">
     
       <div class="navbar-item">
   
@@ -122,7 +133,6 @@
 </a></div>
     
   </div>
-  
   
   <div class="col-lg-9 navbar-header-items">
     
@@ -167,23 +177,25 @@
       
         <div class="navbar-item navbar-persistent--container">
           
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
+    <span class="search-button__kbd-shortcut">Search</span>
+    <span><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
         </div>
       
       
         <div class="navbar-item">
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script></div>
@@ -199,8 +211,8 @@ document.write(`
           
           
           
-          <a href="https://github.com/bluesky/ophyd-async" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
-            <label class="sr-only">GitHub</label></a>
+          <a href="https://github.com/bluesky/ophyd-async" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
           
@@ -211,8 +223,8 @@ document.write(`
           
           
           
-          <a href="https://pypi.org/project/ophyd-async" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fas fa-cube"></i></span>
-            <label class="sr-only">PyPI</label></a>
+          <a href="https://pypi.org/project/ophyd-async" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fas fa-cube fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">PyPI</span></a>
         </li>
         <li class="nav-item">
           
@@ -223,8 +235,8 @@ document.write(`
           
           
           
-          <a href="https://gitter.im/NSLS-II/DAMA" title="Gitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fas fa-person-circle-question"></i></span>
-            <label class="sr-only">Gitter</label></a>
+          <a href="https://gitter.im/NSLS-II/DAMA" title="Gitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fas fa-person-circle-question fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Gitter</span></a>
         </li>
 </ul></div>
       
@@ -234,18 +246,20 @@ document.write(`
   
   
     <div class="navbar-persistent--mobile">
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
+    <span class="search-button__kbd-shortcut">Search</span>
+    <span><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
     </div>
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
       <span class="fa-solid fa-outdent"></span>
     </label>
   
@@ -306,10 +320,10 @@ document.write(`
           <div class="navbar-item">
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script></div>
@@ -325,8 +339,8 @@ document.write(`
           
           
           
-          <a href="https://github.com/bluesky/ophyd-async" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
-            <label class="sr-only">GitHub</label></a>
+          <a href="https://github.com/bluesky/ophyd-async" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
           
@@ -337,8 +351,8 @@ document.write(`
           
           
           
-          <a href="https://pypi.org/project/ophyd-async" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fas fa-cube"></i></span>
-            <label class="sr-only">PyPI</label></a>
+          <a href="https://pypi.org/project/ophyd-async" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fas fa-cube fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">PyPI</span></a>
         </li>
         <li class="nav-item">
           
@@ -349,8 +363,8 @@ document.write(`
           
           
           
-          <a href="https://gitter.im/NSLS-II/DAMA" title="Gitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fas fa-person-circle-question"></i></span>
-            <label class="sr-only">Gitter</label></a>
+          <a href="https://gitter.im/NSLS-II/DAMA" title="Gitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fas fa-person-circle-question fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Gitter</span></a>
         </li>
 </ul></div>
         
@@ -386,9 +400,6 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="ophyd_async.core.set_sim_put_proceeds.html">ophyd_async.core.set_sim_put_proceeds</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ophyd_async.core.set_sim_value.html">ophyd_async.core.set_sim_value</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ophyd_async.core.wait_for_value.html">ophyd_async.core.wait_for_value</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ophyd_async.core.connect_children.html">ophyd_async.core.connect_children</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ophyd_async.core.get_device_children.html">ophyd_async.core.get_device_children</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ophyd_async.core.name_children.html">ophyd_async.core.name_children</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ophyd_async.core.get_dtype.html">ophyd_async.core.get_dtype</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ophyd_async.core.get_unique.html">ophyd_async.core.get_unique</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ophyd_async.core.merge_gathered_dicts.html">ophyd_async.core.merge_gathered_dicts</a></li>
@@ -491,8 +502,8 @@ document.write(`
 
 
 
-<nav aria-label="Breadcrumbs">
-  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
       <a href="../../index.html" class="nav-link" aria-label="Home">
@@ -539,43 +550,46 @@ may change API on minor release numbers before then</p>
 <p class="rubric">Methods</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.clear" title="ophyd_async.core.DeviceVector.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">children</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">connect</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.clear" title="ophyd_async.core.DeviceVector.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.copy" title="ophyd_async.core.DeviceVector.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.connect" title="ophyd_async.core.DeviceVector.connect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connect</span></code></a></p></td>
+<td><p>Connect self and all child Devices.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.copy" title="ophyd_async.core.DeviceVector.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.fromkeys" title="ophyd_async.core.DeviceVector.fromkeys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromkeys</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.fromkeys" title="ophyd_async.core.DeviceVector.fromkeys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromkeys</span></code></a></p></td>
 <td><p>Create a new dictionary with keys from iterable and values set to value.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.get" title="ophyd_async.core.DeviceVector.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.get" title="ophyd_async.core.DeviceVector.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a></p></td>
 <td><p>Return the value for key if key is in the dictionary, else default.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.items" title="ophyd_async.core.DeviceVector.items"><code class="xref py py-obj docutils literal notranslate"><span class="pre">items</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.items" title="ophyd_async.core.DeviceVector.items"><code class="xref py py-obj docutils literal notranslate"><span class="pre">items</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.keys" title="ophyd_async.core.DeviceVector.keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keys</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.keys" title="ophyd_async.core.DeviceVector.keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keys</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.pop" title="ophyd_async.core.DeviceVector.pop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pop</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.pop" title="ophyd_async.core.DeviceVector.pop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pop</span></code></a></p></td>
 <td><p>If the key is not found, return the default if given; otherwise, raise a KeyError.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.popitem" title="ophyd_async.core.DeviceVector.popitem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">popitem</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.popitem" title="ophyd_async.core.DeviceVector.popitem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">popitem</span></code></a></p></td>
 <td><p>Remove and return a (key, value) pair as a 2-tuple.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_name</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.set_name" title="ophyd_async.core.DeviceVector.set_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_name</span></code></a></p></td>
+<td><p>Set <code class="docutils literal notranslate"><span class="pre">self.name=name</span></code> and each <code class="docutils literal notranslate"><span class="pre">self.child.name=name+&quot;-child&quot;</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.setdefault" title="ophyd_async.core.DeviceVector.setdefault"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setdefault</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.setdefault" title="ophyd_async.core.DeviceVector.setdefault"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setdefault</span></code></a></p></td>
 <td><p>Insert key with a value of default if key is not in the dictionary.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.update" title="ophyd_async.core.DeviceVector.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.update" title="ophyd_async.core.DeviceVector.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a></p></td>
 <td><p>If E is present and has a .keys() method, then does:  for k in E: D[k] = E[k] If E is present and lacks a .keys() method, then does:  for k, v in E: D[k] = v In either case, this is followed by: for k in F:  D[k] = F[k]</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.values" title="ophyd_async.core.DeviceVector.values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#ophyd_async.core.DeviceVector.values" title="ophyd_async.core.DeviceVector.values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -595,6 +609,17 @@ may change API on minor release numbers before then</p>
 <dt class="sig sig-object py" id="ophyd_async.core.DeviceVector.clear">
 <span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None.</span>&#160; <span class="pre">Remove</span> <span class="pre">all</span> <span class="pre">items</span> <span class="pre">from</span> <span class="pre">D.</span></span></span><a class="headerlink" href="#ophyd_async.core.DeviceVector.clear" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ophyd_async.core.DeviceVector.connect">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ophyd_async.core.DeviceVector.connect" title="Link to this definition">#</a></dt>
+<dd><p>Connect self and all child Devices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sim</strong> – If True then connect in simulation mode.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ophyd_async.core.DeviceVector.copy">
@@ -645,6 +670,17 @@ Raises KeyError if the dict is empty.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="ophyd_async.core.DeviceVector.set_name">
+<span class="sig-name descname"><span class="pre">set_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ophyd_async.core.DeviceVector.set_name" title="Link to this definition">#</a></dt>
+<dd><p>Set <code class="docutils literal notranslate"><span class="pre">self.name=name</span></code> and each <code class="docutils literal notranslate"><span class="pre">self.child.name=name+&quot;-child&quot;</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> – New name to set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="ophyd_async.core.DeviceVector.setdefault">
 <span class="sig-name descname"><span class="pre">setdefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ophyd_async.core.DeviceVector.setdefault" title="Link to this definition">#</a></dt>
 <dd><p>Insert key with a value of default if key is not in the dictionary.</p>
@@ -673,11 +709,10 @@ In either case, this is followed by: for k in F:  D[k] = F[k]</p>
               
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="ophyd_async.core.DeviceCollector.html"
@@ -697,10 +732,7 @@ In either case, this is followed by: for k in F:  D[k] = F[k]</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -717,6 +749,7 @@ In either case, this is followed by: for k in F:  D[k] = F[k]</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ophyd_async.core.DeviceVector"><code class="docutils literal notranslate"><span class="pre">DeviceVector</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ophyd_async.core.DeviceVector.clear"><code class="docutils literal notranslate"><span class="pre">DeviceVector.clear()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ophyd_async.core.DeviceVector.connect"><code class="docutils literal notranslate"><span class="pre">DeviceVector.connect()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ophyd_async.core.DeviceVector.copy"><code class="docutils literal notranslate"><span class="pre">DeviceVector.copy()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ophyd_async.core.DeviceVector.fromkeys"><code class="docutils literal notranslate"><span class="pre">DeviceVector.fromkeys()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ophyd_async.core.DeviceVector.get"><code class="docutils literal notranslate"><span class="pre">DeviceVector.get()</span></code></a></li>
@@ -725,6 +758,7 @@ In either case, this is followed by: for k in F:  D[k] = F[k]</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ophyd_async.core.DeviceVector.name"><code class="docutils literal notranslate"><span class="pre">DeviceVector.name</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ophyd_async.core.DeviceVector.pop"><code class="docutils literal notranslate"><span class="pre">DeviceVector.pop()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ophyd_async.core.DeviceVector.popitem"><code class="docutils literal notranslate"><span class="pre">DeviceVector.popitem()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ophyd_async.core.DeviceVector.set_name"><code class="docutils literal notranslate"><span class="pre">DeviceVector.set_name()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ophyd_async.core.DeviceVector.setdefault"><code class="docutils literal notranslate"><span class="pre">DeviceVector.setdefault()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ophyd_async.core.DeviceVector.update"><code class="docutils literal notranslate"><span class="pre">DeviceVector.update()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ophyd_async.core.DeviceVector.values"><code class="docutils literal notranslate"><span class="pre">DeviceVector.values()</span></code></a></li>
@@ -769,17 +803,18 @@ In either case, this is followed by: for k in F:  D[k] = F[k]</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
   
   
+  
     <div class="footer-items__end">
       
         <div class="footer-item"><p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.0.
 </p></div>
       
     </div>

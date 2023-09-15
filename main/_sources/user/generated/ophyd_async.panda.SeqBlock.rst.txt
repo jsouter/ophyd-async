@@ -21,6 +21,7 @@ ophyd\_async.panda.SeqBlock
    .. autosummary::
       :nosignatures:
    
+      ~SeqBlock.children
       ~SeqBlock.connect
       ~SeqBlock.set_name
    

@@ -21,6 +21,7 @@ ophyd\_async.epics.areadetector.HDFStreamerDet
    .. autosummary::
       :nosignatures:
    
+      ~HDFStreamerDet.children
       ~HDFStreamerDet.collect
       ~HDFStreamerDet.collect_asset_docs
       ~HDFStreamerDet.complete

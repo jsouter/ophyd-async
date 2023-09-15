@@ -21,6 +21,7 @@ ophyd\_async.core.SignalRW
    .. autosummary::
       :nosignatures:
    
+      ~SignalRW.children
       ~SignalRW.clear_sub
       ~SignalRW.connect
       ~SignalRW.describe

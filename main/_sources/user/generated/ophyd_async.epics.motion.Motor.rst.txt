@@ -21,6 +21,7 @@ ophyd\_async.epics.motion.Motor
    .. autosummary::
       :nosignatures:
    
+      ~Motor.children
       ~Motor.connect
       ~Motor.describe
       ~Motor.describe_configuration

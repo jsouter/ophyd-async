@@ -21,6 +21,7 @@ ophyd\_async.core.Device
    .. autosummary::
       :nosignatures:
    
+      ~Device.children
       ~Device.connect
       ~Device.set_name
    

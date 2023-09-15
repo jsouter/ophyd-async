@@ -21,6 +21,7 @@ ophyd\_async.core.Signal
    .. autosummary::
       :nosignatures:
    
+      ~Signal.children
       ~Signal.connect
       ~Signal.set_name
    

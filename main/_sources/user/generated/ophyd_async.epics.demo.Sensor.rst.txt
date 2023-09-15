@@ -21,6 +21,7 @@ ophyd\_async.epics.demo.Sensor
    .. autosummary::
       :nosignatures:
    
+      ~Sensor.children
       ~Sensor.connect
       ~Sensor.describe
       ~Sensor.describe_configuration

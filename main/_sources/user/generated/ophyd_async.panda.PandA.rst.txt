@@ -21,6 +21,7 @@ ophyd\_async.panda.PandA
    .. autosummary::
       :nosignatures:
    
+      ~PandA.children
       ~PandA.connect
       ~PandA.set_attribute
       ~PandA.set_name
