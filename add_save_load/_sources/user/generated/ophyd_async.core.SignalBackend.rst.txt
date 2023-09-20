@@ -24,6 +24,7 @@ ophyd\_async.core.SignalBackend
       ~SignalBackend.connect
       ~SignalBackend.get_descriptor
       ~SignalBackend.get_reading
+      ~SignalBackend.get_setpoint
       ~SignalBackend.get_value
       ~SignalBackend.put
       ~SignalBackend.set_callback

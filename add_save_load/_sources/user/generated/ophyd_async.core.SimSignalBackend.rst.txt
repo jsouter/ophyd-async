@@ -24,6 +24,7 @@ ophyd\_async.core.SimSignalBackend
       ~SimSignalBackend.connect
       ~SimSignalBackend.get_descriptor
       ~SimSignalBackend.get_reading
+      ~SimSignalBackend.get_setpoint
       ~SimSignalBackend.get_value
       ~SimSignalBackend.put
       ~SimSignalBackend.set_callback

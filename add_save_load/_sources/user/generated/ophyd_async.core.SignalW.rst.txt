@@ -23,7 +23,6 @@ ophyd\_async.core.SignalW
    
       ~SignalW.children
       ~SignalW.connect
-      ~SignalW.get_setpoint
       ~SignalW.set
       ~SignalW.set_name
    
