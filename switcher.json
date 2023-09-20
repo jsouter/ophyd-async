@@ -4,8 +4,8 @@
     "url": "https://bluesky.github.io/ophyd-async/main/"
   },
   {
-    "version": "add_children_property_to_device",
-    "url": "https://bluesky.github.io/ophyd-async/add_children_property_to_device/"
+    "version": "add_save_load",
+    "url": "https://bluesky.github.io/ophyd-async/add_save_load/"
   },
   {
     "version": "dependabot_github_actions_actions_checkout-4",
