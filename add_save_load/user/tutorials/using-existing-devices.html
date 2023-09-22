@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Using existing Devices &#8212; ophyd-async 0.1.dev393+gfa25581 documentation</title>
+    <title>Using existing Devices &#8212; ophyd-async 0.1.dev395+g574a15e documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
   <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
-    <script src="../../_static/documentation_options.js?v=132b05b2"></script>
+    <script src="../../_static/documentation_options.js?v=3afccd91"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -690,12 +690,12 @@ can do a <a class="reference external" href="https://blueskyproject.io/bluesky/g
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="o">&lt;</span><span class="n">grid_scan</span><span class="p">([</span><span class="n">det</span><span class="p">],</span> <span class="n">samp</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">samp</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 
 
-<span class="go">Transient Scan ID: 1     Time: 2023-09-22 10:42:18</span>
-<span class="go">Persistent Unique Scan ID: &#39;97b2c52f-1a23-4256-989e-64fca39c2bd8&#39;</span>
+<span class="go">Transient Scan ID: 1     Time: 2023-09-22 11:02:43</span>
+<span class="go">Persistent Unique Scan ID: &#39;aa787fed-7e66-4a43-b068-a1e41feb53e9&#39;</span>
 
 
 
-<span class="gh">Out[6]: </span><span class="go">RunEngineResult(run_start_uids=(&#39;97b2c52f-1a23-4256-989e-64fca39c2bd8&#39;,), plan_result=&#39;97b2c52f-1a23-4256-989e-64fca39c2bd8&#39;, exit_status=&#39;success&#39;, interrupted=False, reason=&#39;&#39;, exception=None)</span>
+<span class="gh">Out[6]: </span><span class="go">RunEngineResult(run_start_uids=(&#39;aa787fed-7e66-4a43-b068-a1e41feb53e9&#39;,), plan_result=&#39;aa787fed-7e66-4a43-b068-a1e41feb53e9&#39;, exit_status=&#39;success&#39;, interrupted=False, reason=&#39;&#39;, exception=None)</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../../_images/grid_scan1.png"><img alt="../../_images/grid_scan1.png" src="../../_images/grid_scan1.png" style="width: 4in;" /></a>
@@ -716,12 +716,12 @@ device we can see it gives the same result:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="o">&lt;</span><span class="n">grid_scan</span><span class="p">([</span><span class="n">det</span><span class="p">,</span> <span class="n">det_old</span><span class="p">],</span> <span class="n">samp</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">samp</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 
 
-<span class="go">Transient Scan ID: 2     Time: 2023-09-22 10:42:22</span>
-<span class="go">Persistent Unique Scan ID: &#39;b032ae50-7362-4e1c-8026-15f3e14d19a8&#39;</span>
+<span class="go">Transient Scan ID: 2     Time: 2023-09-22 11:02:47</span>
+<span class="go">Persistent Unique Scan ID: &#39;5dd73867-f00a-4bd4-8498-1e7138123cc9&#39;</span>
 
 
 
-<span class="gh">Out[9]: </span><span class="go">RunEngineResult(run_start_uids=(&#39;b032ae50-7362-4e1c-8026-15f3e14d19a8&#39;,), plan_result=&#39;b032ae50-7362-4e1c-8026-15f3e14d19a8&#39;, exit_status=&#39;success&#39;, interrupted=False, reason=&#39;&#39;, exception=None)</span>
+<span class="gh">Out[9]: </span><span class="go">RunEngineResult(run_start_uids=(&#39;5dd73867-f00a-4bd4-8498-1e7138123cc9&#39;,), plan_result=&#39;5dd73867-f00a-4bd4-8498-1e7138123cc9&#39;, exit_status=&#39;success&#39;, interrupted=False, reason=&#39;&#39;, exception=None)</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../../_images/grid_scan2.png"><img alt="../../_images/grid_scan2.png" src="../../_images/grid_scan2.png" style="width: 4in;" /></a>
