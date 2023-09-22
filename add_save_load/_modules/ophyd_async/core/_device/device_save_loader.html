@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ophyd_async.core._device.device_save_loader &#8212; ophyd-async 0.1.dev390+gdde0883 documentation</title>
+    <title>ophyd_async.core._device.device_save_loader &#8212; ophyd-async 0.1.dev393+gfa25581 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
   <script src="../../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
-    <script src="../../../../_static/documentation_options.js?v=76f4e0d1"></script>
+    <script src="../../../../_static/documentation_options.js?v=132b05b2"></script>
     <script src="../../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -419,7 +419,7 @@ document.write(`
                   
   <h1>Source code for ophyd_async.core._device.device_save_loader</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">import</span> <span class="nn">yaml</span>
 <span class="kn">from</span> <span class="nn">bluesky</span> <span class="kn">import</span> <span class="n">Msg</span>
@@ -428,13 +428,55 @@ document.write(`
 <span class="kn">from</span> <span class="nn">ophyd_async.core</span> <span class="kn">import</span> <span class="n">Device</span><span class="p">,</span> <span class="n">SignalRW</span>
 
 
-<span class="k">def</span> <span class="nf">get_signal_RWs_from_device</span><span class="p">(</span>
-    <span class="n">device</span><span class="p">:</span> <span class="n">Device</span><span class="p">,</span> <span class="n">path_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">signalRWs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">SignalRW</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="viewcode-block" id="get_signal_values">
+<a class="viewcode-back" href="../../../../user/generated/ophyd_async.core.get_signal_values.html#ophyd_async.core.get_signal_values">[docs]</a>
+<span class="k">def</span> <span class="nf">get_signal_values</span><span class="p">(</span>
+    <span class="n">signals</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">SignalRW</span><span class="p">],</span> <span class="n">ignore</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Read the values of SignalRW&#39;s, to be used alongside `walk_rw_signals`. Used as part</span>
+<span class="sd">    of saving a device</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        signals : Dict[str, SignalRW]: A dictionary matching the string attribute path</span>
+<span class="sd">        of a SignalRW to the signal itself</span>
+
+<span class="sd">        ignore : List of strings: . A list of string attribute paths to the SignalRW&#39;s</span>
+<span class="sd">        to be ignored. Defaults to None.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">        Dict[str, Any]: A dictionary matching the string attribute path of a SignalRW</span>
+<span class="sd">        to the value of that signal</span>
+
+<span class="sd">    Yields:</span>
+<span class="sd">        Iterator[Dict[str, Any]]: The Location of a signal</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    :func:`ophyd_async.core.walk_rw_signals`</span>
+<span class="sd">    :func:`ophyd_async.core.save_to_yaml`</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">Msg</span><span class="p">(</span><span class="s2">&quot;locate&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">signals</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">value</span><span class="p">[</span><span class="s2">&quot;setpoint&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span>
+    <span class="n">signal_name_to_val</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">signals</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">ignore</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">signal_name_to_val</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">signal_name_to_val</span></div>
+
+
+
+<div class="viewcode-block" id="walk_rw_signals">
+<a class="viewcode-back" href="../../../../user/generated/ophyd_async.core.walk_rw_signals.html#ophyd_async.core.walk_rw_signals">[docs]</a>
+<span class="k">def</span> <span class="nf">walk_rw_signals</span><span class="p">(</span>
+    <span class="n">device</span><span class="p">:</span> <span class="n">Device</span><span class="p">,</span> <span class="n">path_prefix</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">SignalRW</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get all the SignalRWs from a device and store them with their dotted attribute</span>
-<span class="sd">    paths. Used by the save and load methods.</span>
-
+<span class="sd">    paths in a dictionary. Used as part of saving and loading a device</span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    device : Device</span>
@@ -443,105 +485,72 @@ document.write(`
 <span class="sd">    path_prefix : str</span>
 <span class="sd">        For internal use, leave blank when calling the method.</span>
 
-<span class="sd">    SignalRWs : dict</span>
-<span class="sd">        A dictionary matching the string attribute path of a SignalRW with the</span>
-<span class="sd">        signal itself. Leave blank when calling the method.</span>
-
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    SignalRWs : dict</span>
 <span class="sd">        A dictionary matching the string attribute path of a SignalRW with the</span>
 <span class="sd">        signal itself.</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    :func:`ophyd_async.core.get_signal_values`</span>
+<span class="sd">    :func:`ophyd_async.core.save_to_yaml`</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">path_prefix</span><span class="p">:</span>
+        <span class="n">path_prefix</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="n">signals</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">SignalRW</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">attr_name</span><span class="p">,</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">device</span><span class="o">.</span><span class="n">children</span><span class="p">():</span>
-        <span class="n">dot</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-        <span class="c1"># Place a dot inbetween the upper and lower class.</span>
-        <span class="c1"># Don&#39;t do this for highest level class.</span>
-        <span class="k">if</span> <span class="n">path_prefix</span><span class="p">:</span>
-            <span class="n">dot</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
-        <span class="n">dot_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path_prefix</span><span class="si">}{</span><span class="n">dot</span><span class="si">}{</span><span class="n">attr_name</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">dot_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path_prefix</span><span class="si">}{</span><span class="n">attr_name</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span> <span class="ow">is</span> <span class="n">SignalRW</span><span class="p">:</span>
-            <span class="n">signalRWs</span><span class="p">[</span><span class="n">dot_path</span><span class="p">]</span> <span class="o">=</span> <span class="n">attr</span>
-        <span class="n">get_signal_RWs_from_device</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">path_prefix</span><span class="o">=</span><span class="n">dot_path</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">signalRWs</span>
+            <span class="n">signals</span><span class="p">[</span><span class="n">dot_path</span><span class="p">]</span> <span class="o">=</span> <span class="n">attr</span>
+        <span class="n">attr_signals</span> <span class="o">=</span> <span class="n">walk_rw_signals</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">path_prefix</span><span class="o">=</span><span class="n">dot_path</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+        <span class="n">signals</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">attr_signals</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">signals</span></div>
 
 
-<div class="viewcode-block" id="save_device">
-<a class="viewcode-back" href="../../../../user/generated/ophyd_async.core.save_device.html#ophyd_async.core.save_device">[docs]</a>
-<span class="k">def</span> <span class="nf">save_device</span><span class="p">(</span><span class="n">device</span><span class="p">:</span> <span class="n">Device</span><span class="p">,</span> <span class="n">savename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ignore</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Plan to save the setup of a device by getting a list of its signals and their</span>
-<span class="sd">    readback values.</span>
 
-<span class="sd">    Store the output to a yaml file ``savename.yaml``</span>
+<div class="viewcode-block" id="save_to_yaml">
+<a class="viewcode-back" href="../../../../user/generated/ophyd_async.core.save_to_yaml.html#ophyd_async.core.save_to_yaml">[docs]</a>
+<span class="k">def</span> <span class="nf">save_to_yaml</span><span class="p">(</span><span class="n">phases</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]],</span> <span class="n">save_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Serialises and saves a phase or a set of phases of a device&#39;s SignalRW&#39;s to a</span>
+<span class="sd">    yaml file.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    device : Device</span>
+<span class="sd">    phases : dict or list of dicts</span>
+<span class="sd">        The values to save. Each item in the list is a seperate phase used when loading</span>
+<span class="sd">        a device. In general this variable be the return value of `get_signal_values`.</span>
 
-<span class="sd">    savename : str</span>
-<span class="sd">        Name of the YAML file.</span>
-
-<span class="sd">    ignore : list of str</span>
-<span class="sd">        List of attribute path strings to not include in the save file.</span>
-
-<span class="sd">    Yields</span>
-<span class="sd">    ------</span>
-<span class="sd">    msg : Msg</span>
-<span class="sd">        ``locate``, ``*signals``</span>
+<span class="sd">    save_path : str</span>
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
-<span class="sd">    :func:`ophyd_async.core.load_device_plan`</span>
-<span class="sd">    :func:`ophyd_async.core.load_device`</span>
-<span class="sd">    :func:`sort_signal_by_phase`</span>
+<span class="sd">    :func:`ophyd_async.core.walk_rw_signals`</span>
+<span class="sd">    :func:`ophyd_async.core.get_signal_values`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">signalRWs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">SignalRW</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_signal_RWs_from_device</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-
-    <span class="c1"># Get list of signalRWs ordered by phase</span>
-    <span class="n">phase_dicts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">SignalRW</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">signalRWs</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="s2">&quot;sort_signal_by_phase&quot;</span><span class="p">):</span>
-            <span class="n">phase_dicts</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">sort_signal_by_phase</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">signalRWs</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">phase_dicts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">signalRWs</span><span class="p">)</span>
-
-        <span class="c1"># Locate all signals in parallel</span>
-        <span class="n">signals_to_locate</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">SignalRW</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="n">phase_dicts</span><span class="p">:</span>
-            <span class="n">signals_to_locate</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">phase</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-        <span class="n">signal_values</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">Msg</span><span class="p">(</span><span class="s2">&quot;locate&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">signals_to_locate</span><span class="p">)</span>
-        <span class="n">signal_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">value</span><span class="p">[</span><span class="s2">&quot;setpoint&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">signal_values</span><span class="p">]</span>
-
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">phases</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="n">phases</span> <span class="o">=</span> <span class="p">[</span><span class="n">phases</span><span class="p">]</span>
+    <span class="n">phase_outputs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="n">phases</span><span class="p">:</span>
         <span class="c1"># The table PVs are dictionaries of np arrays. Need to convert these to</span>
         <span class="c1"># lists for easy saving</span>
-        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">signal_values</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">phase</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
                 <span class="k">for</span> <span class="n">inner_key</span><span class="p">,</span> <span class="n">inner_value</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inner_value</span><span class="p">,</span> <span class="n">ndarray</span><span class="p">):</span>
                         <span class="n">value</span><span class="p">[</span><span class="n">inner_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">inner_value</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-            <span class="c1"># Convert enums to their values</span>
-            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">signal_values</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">Enum</span><span class="p">):</span>
-                <span class="n">signal_values</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">value</span>
+            <span class="c1"># Convert enums to their value</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+                <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+                <span class="n">phase</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">phase_outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">phase</span><span class="p">)</span>
 
-        <span class="c1"># For each phase, save a dictionary containing the phases&#39;</span>
-        <span class="c1"># dotted signalRW paths and their values</span>
-        <span class="n">phase_outputs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">signal_value_index</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="n">phase_dicts</span><span class="p">:</span>
-            <span class="n">signal_name_values</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-            <span class="k">for</span> <span class="n">signal_name</span> <span class="ow">in</span> <span class="n">phase</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-                <span class="k">if</span> <span class="n">signal_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ignore</span><span class="p">:</span>
-                    <span class="n">signal_name_values</span><span class="p">[</span><span class="n">signal_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">signal_values</span><span class="p">[</span><span class="n">signal_value_index</span><span class="p">]</span>
-                <span class="n">signal_value_index</span> <span class="o">+=</span> <span class="mi">1</span>
-
-            <span class="n">phase_outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">signal_name_values</span><span class="p">)</span>
-
-        <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">savename</span><span class="si">}</span><span class="s2">.yaml&quot;</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-            <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">phase_outputs</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span></div>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">phase_outputs</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span></div>
 
 </pre></div>
 
