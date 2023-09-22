@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ophyd_async.core._device.device_save_loader &#8212; ophyd-async 0.1.dev396+g5b98f9f documentation</title>
+    <title>ophyd_async.core._device.device_save_loader &#8212; ophyd-async 0.1.dev395+g30346d5 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
   <script src="../../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
-    <script src="../../../../_static/documentation_options.js?v=6dc6b616"></script>
+    <script src="../../../../_static/documentation_options.js?v=426532d7"></script>
     <script src="../../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -463,9 +463,7 @@ document.write(`
         <span class="n">ignore</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">]</span>
 
     <span class="n">values</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">Msg</span><span class="p">(</span><span class="s2">&quot;locate&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">signals</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-
     <span class="k">assert</span> <span class="n">values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;No signalRW&#39;s found&quot;</span>
-
     <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">value</span><span class="p">[</span><span class="s2">&quot;setpoint&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span>
     <span class="n">signal_name_to_val</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">signals</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
@@ -552,7 +550,9 @@ document.write(`
                         <span class="n">value</span><span class="p">[</span><span class="n">inner_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">inner_value</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
             <span class="c1"># Convert enums to their value</span>
             <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
-                <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+                <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span>
+                    <span class="n">value</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span>
+                <span class="p">),</span> <span class="s2">&quot;Enum value did not evaluate to string&quot;</span>
                 <span class="n">phase</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">value</span>
         <span class="n">phase_outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">phase</span><span class="p">)</span>
 
