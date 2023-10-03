@@ -20,7 +20,7 @@
     "url": "https://bluesky.github.io/ophyd-async/dependabot_github_actions_softprops_action-gh-release-0.1.15/"
   },
   {
-    "version": "pypi_oidc",
-    "url": "https://bluesky.github.io/ophyd-async/pypi_oidc/"
+    "version": "docs-and-readme",
+    "url": "https://bluesky.github.io/ophyd-async/docs-and-readme/"
   }
 ]
