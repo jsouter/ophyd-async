@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ophyd_async.core.utils &#8212; ophyd-async 0.1.1.dev2+g2acac7d documentation</title>
+    <title>ophyd_async.core.utils &#8212; ophyd-async 0.1.1.dev3+gc33b9e7 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
   <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
-    <script src="../../../_static/documentation_options.js?v=f986af0f"></script>
+    <script src="../../../_static/documentation_options.js?v=ff71ec8e"></script>
     <script src="../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -419,7 +419,19 @@ document.write(`
                   
   <h1>Source code for ophyd_async.core.utils</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">asyncio</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Awaitable</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">TypeVar</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Awaitable</span><span class="p">,</span>
+    <span class="n">Callable</span><span class="p">,</span>
+    <span class="n">Dict</span><span class="p">,</span>
+    <span class="n">Iterable</span><span class="p">,</span>
+    <span class="n">List</span><span class="p">,</span>
+    <span class="n">Optional</span><span class="p">,</span>
+    <span class="n">Protocol</span><span class="p">,</span>
+    <span class="n">Type</span><span class="p">,</span>
+    <span class="n">TypeVar</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">bluesky.protocols</span> <span class="kn">import</span> <span class="n">Reading</span>
@@ -532,6 +544,38 @@ document.write(`
     <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">coros</span><span class="p">):</span>
         <span class="n">ret</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">ret</span></div>
+
+
+
+<div class="viewcode-block" id="DirectoryInfo">
+<a class="viewcode-back" href="../../../user/generated/ophyd_async.core.DirectoryInfo.html#ophyd_async.core.DirectoryInfo">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">DirectoryInfo</span><span class="p">:</span>
+    <span class="n">directory_path</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">filename_prefix</span><span class="p">:</span> <span class="nb">str</span></div>
+
+
+
+<div class="viewcode-block" id="DirectoryProvider">
+<a class="viewcode-back" href="../../../user/generated/ophyd_async.core.DirectoryProvider.html#ophyd_async.core.DirectoryProvider">[docs]</a>
+<span class="k">class</span> <span class="nc">DirectoryProvider</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+<div class="viewcode-block" id="DirectoryProvider.__call__">
+<a class="viewcode-back" href="../../../user/generated/ophyd_async.core.DirectoryProvider.html#ophyd_async.core.DirectoryProvider.__call__">[docs]</a>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DirectoryInfo</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the current directory to write files into&quot;&quot;&quot;</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="StaticDirectoryProvider">
+<a class="viewcode-back" href="../../../user/generated/ophyd_async.core.StaticDirectoryProvider.html#ophyd_async.core.StaticDirectoryProvider">[docs]</a>
+<span class="k">class</span> <span class="nc">StaticDirectoryProvider</span><span class="p">(</span><span class="n">DirectoryProvider</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">filename_prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_directory_info</span> <span class="o">=</span> <span class="n">DirectoryInfo</span><span class="p">(</span><span class="n">directory_path</span><span class="p">,</span> <span class="n">filename_prefix</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DirectoryInfo</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_directory_info</span></div>
 
 </pre></div>
 

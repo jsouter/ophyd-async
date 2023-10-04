@@ -54,6 +54,9 @@ ophyd\_async.core
       DeviceVector
       StandardReadable
       AsyncStatus
+      DirectoryInfo
+      DirectoryProvider
+      StaticDirectoryProvider
    
    
 
