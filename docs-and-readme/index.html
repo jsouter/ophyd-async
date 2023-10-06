@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Ophyd Async &#8212; ophyd-async 0.1.1.dev5+gdd8da3f documentation</title>
+    <title>Ophyd Async &#8212; ophyd-async 0.1.1.dev6+gfcb5576 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
   <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
-    <script src="_static/documentation_options.js?v=66070197"></script>
+    <script src="_static/documentation_options.js?v=17e7eaf1"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -399,19 +399,17 @@ abstraction layer that enables experiment orchestration and data acquisition
 code to operate above the specifics of particular devices and control systems.</p>
 <p>Both ophyd and ophyd-async are typically used with the <a class="reference external" href="http://blueskyproject.io/bluesky">Bluesky Run Engine</a> for
 experiment orchestration and data acquisition. However, these libraries are
-able to be used in a stand-alone fashion.</p>
-<p>Many facilities use ophyd-async to integrate with control systems that use
-<a class="reference external" href="http://www.aps.anl.gov/epics/">EPICS</a>, but ophyd’s design and some of its objects are also used to integrate
-with other control systems.</p>
+able to be used in a stand-alone fashion. For an example of how a facility defines
+and uses ophyd-async devices, see <a class="reference external" href="https://github.com/DiamondLightSource/dodal">dls-dodal</a>, which is currently using a
+mixture of ophyd and ophyd-async devices.</p>
+<p>While <a class="reference external" href="http://www.aps.anl.gov/epics/">EPICS</a> is the most common control system layer that ophyd-async can
+interface with, other control systems like <a class="reference external" href="https://www.tango-controls.org/">Tango</a> are used by some facilities
+also. In addition to the abstractions provided by ophyd, ophyd-async allows:</p>
 <ul class="simple">
-<li><p>Put the details specific to a device or control system behind a <strong>high-level
-interface</strong> with methods like <code class="docutils literal notranslate"><span class="pre">trigger()</span></code>, <code class="docutils literal notranslate"><span class="pre">read()</span></code>, and <code class="docutils literal notranslate"><span class="pre">set(...)</span></code>.</p></li>
-<li><p><strong>Group</strong> individual control channels (such as EPICS V3 PVs) into logical
-“Devices” to be configured and used as units with internal coordination.</p></li>
-<li><p>Assign readings with <strong>names meaningful for data analysis</strong> that will
-propagate into metadata.</p></li>
-<li><p><strong>Categorize</strong> readings by “kind” (primary reading, configuration,
-engineering/debugging) which can be read selectively.</p></li>
+<li><p>Asynchronous signal access, opening the possibility for hardware-triggered
+scanning (also known as fly-scanning)</p></li>
+<li><p>Simpler instantiation of devices (groupings of signals) with less reliance
+upon complex class hierarchies</p></li>
 </ul>
 <table class="table">
 <tbody>
