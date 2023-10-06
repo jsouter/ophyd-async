@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Using existing Devices &#8212; ophyd-async 0.1.1.dev3+g354d83c documentation</title>
+    <title>Using existing Devices &#8212; ophyd-async 0.1.1.dev5+gdd8da3f documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
   <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
-    <script src="../../_static/documentation_options.js?v=66628f2c"></script>
+    <script src="../../_static/documentation_options.js?v=66070197"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -416,6 +416,9 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="../generated/ophyd_async.core.DeviceVector.html">ophyd_async.core.DeviceVector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../generated/ophyd_async.core.StandardReadable.html">ophyd_async.core.StandardReadable</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../generated/ophyd_async.core.AsyncStatus.html">ophyd_async.core.AsyncStatus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../generated/ophyd_async.core.DirectoryInfo.html">ophyd_async.core.DirectoryInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../generated/ophyd_async.core.DirectoryProvider.html">ophyd_async.core.DirectoryProvider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../generated/ophyd_async.core.StaticDirectoryProvider.html">ophyd_async.core.StaticDirectoryProvider</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../generated/ophyd_async.core.NotConnected.html">ophyd_async.core.NotConnected</a></li>
 </ul>
 </li>
@@ -609,7 +612,7 @@ that you can mix Ophyd and Ophyd Async devices in the same RunEngine:</p>
     <span class="n">samp</span> <span class="o">=</span> <span class="n">demo</span><span class="o">.</span><span class="n">SampleStage</span><span class="p">(</span><span class="n">pv_prefix</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The first thing to note is <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#with" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">with</span> <span class="pre">statement</span></code></a>. This uses a <a class="reference internal" href="../generated/ophyd_async.core.DeviceCollector.html#ophyd_async.core.DeviceCollector" title="ophyd_async.core.DeviceCollector"><code class="xref any py py-class docutils literal notranslate"><span class="pre">DeviceCollector</span></code></a> as a context
+<p>The first thing to note is <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#with" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">with</span> <span class="pre">statement</span></code></a>. This uses a <a class="reference internal" href="../generated/ophyd_async.core.DeviceCollector.html#ophyd_async.core.DeviceCollector" title="ophyd_async.core.DeviceCollector"><code class="xref any py py-class docutils literal notranslate"><span class="pre">DeviceCollector</span></code></a> as a context
 manager to collect up the top level <a class="reference internal" href="../generated/ophyd_async.core.Device.html#ophyd_async.core.Device" title="ophyd_async.core.Device"><code class="xref any py py-class docutils literal notranslate"><span class="pre">Device</span></code></a> instances created in the context,
 and run the following:</p>
 <ul class="simple">
@@ -687,12 +690,12 @@ can do a <a class="reference external" href="https://blueskyproject.io/bluesky/g
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="o">&lt;</span><span class="n">grid_scan</span><span class="p">([</span><span class="n">det</span><span class="p">],</span> <span class="n">samp</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">samp</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 
 
-<span class="go">Transient Scan ID: 1     Time: 2023-10-03 16:18:37</span>
-<span class="go">Persistent Unique Scan ID: &#39;f57ee696-df70-4b98-bb87-1b2afe8fc108&#39;</span>
+<span class="go">Transient Scan ID: 1     Time: 2023-10-06 10:31:08</span>
+<span class="go">Persistent Unique Scan ID: &#39;546039af-587c-49c6-a777-b2468f78097c&#39;</span>
 
 
 
-<span class="gh">Out[6]: </span><span class="go">RunEngineResult(run_start_uids=(&#39;f57ee696-df70-4b98-bb87-1b2afe8fc108&#39;,), plan_result=&#39;f57ee696-df70-4b98-bb87-1b2afe8fc108&#39;, exit_status=&#39;success&#39;, interrupted=False, reason=&#39;&#39;, exception=None)</span>
+<span class="gh">Out[6]: </span><span class="go">RunEngineResult(run_start_uids=(&#39;546039af-587c-49c6-a777-b2468f78097c&#39;,), plan_result=&#39;546039af-587c-49c6-a777-b2468f78097c&#39;, exit_status=&#39;success&#39;, interrupted=False, reason=&#39;&#39;, exception=None)</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../../_images/grid_scan1.png"><img alt="../../_images/grid_scan1.png" src="../../_images/grid_scan1.png" style="width: 4in;" /></a>
@@ -701,7 +704,7 @@ can do a <a class="reference external" href="https://blueskyproject.io/bluesky/g
 <span class="gh">Out[7]: </span><span class="go">RunEngineResult(run_start_uids=(), plan_result=&lt;EnergyMode.low: &#39;Low Energy&#39;&gt;, exit_status=&#39;success&#39;, interrupted=False, reason=&#39;&#39;, exception=None)</span>
 </pre></div>
 </div>
-<p>Although this is an <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a> and programmatic code should import and
+<p>Although this is an <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a> and programmatic code should import and
 use instances of <a class="reference internal" href="../generated/ophyd_async.epics.demo.EnergyMode.html#ophyd_async.epics.demo.EnergyMode" title="ophyd_async.epics.demo.EnergyMode"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnergyMode</span></code></a>, we can set it using a
 string value on the commandline:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="o">&lt;</span><span class="n">mov</span><span class="p">(</span><span class="n">det</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span> <span class="s2">&quot;High Energy&quot;</span><span class="p">)</span>
@@ -713,12 +716,12 @@ device we can see it gives the same result:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="o">&lt;</span><span class="n">grid_scan</span><span class="p">([</span><span class="n">det</span><span class="p">,</span> <span class="n">det_old</span><span class="p">],</span> <span class="n">samp</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">samp</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 
 
-<span class="go">Transient Scan ID: 2     Time: 2023-10-03 16:18:41</span>
-<span class="go">Persistent Unique Scan ID: &#39;d77d8041-9d85-4901-b0af-245d632e0f92&#39;</span>
+<span class="go">Transient Scan ID: 2     Time: 2023-10-06 10:31:12</span>
+<span class="go">Persistent Unique Scan ID: &#39;38e35a85-bec4-43d3-a1ca-274cf08bd194&#39;</span>
 
 
 
-<span class="gh">Out[9]: </span><span class="go">RunEngineResult(run_start_uids=(&#39;d77d8041-9d85-4901-b0af-245d632e0f92&#39;,), plan_result=&#39;d77d8041-9d85-4901-b0af-245d632e0f92&#39;, exit_status=&#39;success&#39;, interrupted=False, reason=&#39;&#39;, exception=None)</span>
+<span class="gh">Out[9]: </span><span class="go">RunEngineResult(run_start_uids=(&#39;38e35a85-bec4-43d3-a1ca-274cf08bd194&#39;,), plan_result=&#39;38e35a85-bec4-43d3-a1ca-274cf08bd194&#39;, exit_status=&#39;success&#39;, interrupted=False, reason=&#39;&#39;, exception=None)</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../../_images/grid_scan2.png"><img alt="../../_images/grid_scan2.png" src="../../_images/grid_scan2.png" style="width: 4in;" /></a>

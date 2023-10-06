@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>ophyd_async.core.AsyncStatus &#8212; ophyd-async 0.1.1.dev3+g354d83c documentation</title>
+    <title>ophyd_async.core.AsyncStatus &#8212; ophyd-async 0.1.1.dev5+gdd8da3f documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
   <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
-    <script src="../../_static/documentation_options.js?v=66628f2c"></script>
+    <script src="../../_static/documentation_options.js?v=66070197"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -49,7 +49,7 @@
     <link rel="icon" href="../../_static/ophyd_favicon.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="ophyd_async.core.NotConnected" href="ophyd_async.core.NotConnected.html" />
+    <link rel="next" title="ophyd_async.core.DirectoryInfo" href="ophyd_async.core.DirectoryInfo.html" />
     <link rel="prev" title="ophyd_async.core.StandardReadable" href="ophyd_async.core.StandardReadable.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -416,6 +416,9 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="ophyd_async.core.DeviceVector.html">ophyd_async.core.DeviceVector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ophyd_async.core.StandardReadable.html">ophyd_async.core.StandardReadable</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">ophyd_async.core.AsyncStatus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ophyd_async.core.DirectoryInfo.html">ophyd_async.core.DirectoryInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ophyd_async.core.DirectoryProvider.html">ophyd_async.core.DirectoryProvider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ophyd_async.core.StaticDirectoryProvider.html">ophyd_async.core.StaticDirectoryProvider</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ophyd_async.core.NotConnected.html">ophyd_async.core.NotConnected</a></li>
 </ul>
 </li>
@@ -545,7 +548,7 @@ may change API on minor release numbers before then</p>
 <h1>ophyd_async.core.AsyncStatus<a class="headerlink" href="#ophyd-async-core-asyncstatus" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="ophyd_async.core.AsyncStatus">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ophyd_async.core.</span></span><span class="sig-name descname"><span class="pre">AsyncStatus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">awaitable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Awaitable" title="(in Python v3.11)"><span class="pre">Awaitable</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">watchers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.11)"><span class="pre">Callable</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ophyd_async/core/async_status.html#AsyncStatus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ophyd_async.core.AsyncStatus" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ophyd_async.core.</span></span><span class="sig-name descname"><span class="pre">AsyncStatus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">awaitable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Awaitable" title="(in Python v3.12)"><span class="pre">Awaitable</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">watchers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.12)"><span class="pre">Callable</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ophyd_async/core/async_status.html#AsyncStatus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ophyd_async.core.AsyncStatus" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://blueskyproject.io/bluesky/hardware.html#bluesky.protocols.Status" title="(in bluesky v1.11.0.post33+g6e3c4721)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Status</span></code></a></p>
 <p>Convert asyncio awaitable to bluesky Status interface</p>
 <p class="rubric">Methods</p>
@@ -578,7 +581,7 @@ may change API on minor release numbers before then</p>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="ophyd_async.core.AsyncStatus.watch">
-<span class="sig-name descname"><span class="pre">watch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">watcher</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.11)"><span class="pre">Callable</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ophyd_async/core/async_status.html#AsyncStatus.watch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ophyd_async.core.AsyncStatus.watch" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">watch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">watcher</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.12)"><span class="pre">Callable</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ophyd_async/core/async_status.html#AsyncStatus.watch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ophyd_async.core.AsyncStatus.watch" title="Link to this definition">#</a></dt>
 <dd><p>Add watcher to the list of interested parties.</p>
 <p>Arguments as per Bluesky <a class="reference external" href="https://blueskyproject.io/bluesky/hardware.html#watch" title="(in bluesky v1.11.0.post33+g6e3c4721)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">watch()</span></code></a> protocol.</p>
 </dd></dl>
@@ -607,11 +610,11 @@ may change API on minor release numbers before then</p>
       </div>
     </a>
     <a class="right-next"
-       href="ophyd_async.core.NotConnected.html"
+       href="ophyd_async.core.DirectoryInfo.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">ophyd_async.core.NotConnected</p>
+        <p class="prev-next-title">ophyd_async.core.DirectoryInfo</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

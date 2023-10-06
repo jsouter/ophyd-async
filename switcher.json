@@ -20,10 +20,6 @@
     "url": "https://bluesky.github.io/ophyd-async/dependabot_github_actions_softprops_action-gh-release-0.1.15/"
   },
   {
-    "version": "directory-provider",
-    "url": "https://bluesky.github.io/ophyd-async/directory-provider/"
-  },
-  {
     "version": "docs-and-readme",
     "url": "https://bluesky.github.io/ophyd-async/docs-and-readme/"
   }

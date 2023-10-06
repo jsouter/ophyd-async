@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Make a Simple Device &#8212; ophyd-async 0.1.1.dev3+g354d83c documentation</title>
+    <title>Make a Simple Device &#8212; ophyd-async 0.1.1.dev5+gdd8da3f documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
   <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
-    <script src="../../_static/documentation_options.js?v=66628f2c"></script>
+    <script src="../../_static/documentation_options.js?v=66070197"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -416,6 +416,9 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="../generated/ophyd_async.core.DeviceVector.html">ophyd_async.core.DeviceVector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../generated/ophyd_async.core.StandardReadable.html">ophyd_async.core.StandardReadable</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../generated/ophyd_async.core.AsyncStatus.html">ophyd_async.core.AsyncStatus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../generated/ophyd_async.core.DirectoryInfo.html">ophyd_async.core.DirectoryInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../generated/ophyd_async.core.DirectoryProvider.html">ophyd_async.core.DirectoryProvider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../generated/ophyd_async.core.StaticDirectoryProvider.html">ophyd_async.core.StaticDirectoryProvider</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../generated/ophyd_async.core.NotConnected.html">ophyd_async.core.NotConnected</a></li>
 </ul>
 </li>
@@ -563,9 +566,9 @@ define some signals, then tell the superclass which signals should contribute to
 <p>First some Signals are constructed and stored on the Device. Each one is passed
 its Python type, which could be:</p>
 <ul class="simple">
-<li><p>A primitive (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref any docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref any docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref any docutils literal notranslate"><span class="pre">float</span></code></a>)</p></li>
+<li><p>A primitive (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="xref any docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="xref any docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="xref any docutils literal notranslate"><span class="pre">float</span></code></a>)</p></li>
 <li><p>An array (<a class="reference external" href="https://numpy.org/devdocs/reference/typing.html#numpy.typing.NDArray" title="(in NumPy v2.0.dev0)"><code class="xref any docutils literal notranslate"><span class="pre">numpy.typing.NDArray</span></code></a> or <code class="docutils literal notranslate"><span class="pre">Sequence[str]</span></code>)</p></li>
-<li><p>An enum (<a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.11)"><code class="xref any docutils literal notranslate"><span class="pre">enum.Enum</span></code></a>).</p></li>
+<li><p>An enum (<a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.12)"><code class="xref any docutils literal notranslate"><span class="pre">enum.Enum</span></code></a>).</p></li>
 </ul>
 <p>The rest of the arguments are PV connection information, in this case the PV suffix.</p>
 <p>Finally <a class="reference internal" href="../generated/ophyd_async.core.StandardReadable.html#ophyd_async.core.StandardReadable" title="ophyd_async.core.StandardReadable"><code class="xref any py py-class docutils literal notranslate"><span class="pre">super().__init__()</span></code></a> is called with:</p>
@@ -658,7 +661,7 @@ and implement some addition protocols:</p>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">set()</span></code> method implements <a class="reference external" href="https://blueskyproject.io/bluesky/hardware.html#bluesky.protocols.Movable" title="(in bluesky v1.11.0.post33+g6e3c4721)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Movable</span></code></a>. This
-creates a <a class="reference external" href="https://docs.python.org/3/glossary.html#term-coroutine" title="(in Python v3.11)"><code class="xref any docutils literal notranslate"><span class="pre">coroutine</span></code></a> <code class="docutils literal notranslate"><span class="pre">do_set()</span></code> which gets the old position, units and
+creates a <a class="reference external" href="https://docs.python.org/3/glossary.html#term-coroutine" title="(in Python v3.12)"><code class="xref any docutils literal notranslate"><span class="pre">coroutine</span></code></a> <code class="docutils literal notranslate"><span class="pre">do_set()</span></code> which gets the old position, units and
 precision in parallel, sets the setpoint, then observes the readback value,
 informing watchers of the progress. When it gets to the requested value it
 completes. This co-routine is wrapped in a timeout handler, and passed to an
