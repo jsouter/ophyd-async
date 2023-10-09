@@ -1,0 +1,47 @@
+.. note::
+
+    Ophyd async is included on a provisional basis until the v1.0 release and 
+    may change API on minor release numbers before then
+
+ophyd\_async.epics.areadetector.Pilatus
+=======================================
+
+.. currentmodule:: ophyd_async.epics.areadetector
+
+.. autoclass:: Pilatus
+   :members:
+   :show-inheritance:
+   :inherited-members:
+   :special-members: __call__, __add__, __mul__
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~Pilatus.children
+      ~Pilatus.collect_asset_docs
+      ~Pilatus.connect
+      ~Pilatus.describe
+      ~Pilatus.describe_configuration
+      ~Pilatus.read
+      ~Pilatus.read_configuration
+      ~Pilatus.set_name
+      ~Pilatus.stage
+      ~Pilatus.trigger
+      ~Pilatus.unstage
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Pilatus.name
+      ~Pilatus.parent
+   
+   
