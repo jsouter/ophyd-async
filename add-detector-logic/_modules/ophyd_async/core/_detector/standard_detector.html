@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ophyd_async.core._detector.standard_detector &#8212; ophyd-async 0.1.1.dev8+g0d9e84f documentation</title>
+    <title>ophyd_async.core._detector.standard_detector &#8212; ophyd-async 0.1.1.dev9+gc329edd documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
   <script src="../../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
-    <script src="../../../../_static/documentation_options.js?v=1183f4f6"></script>
+    <script src="../../../../_static/documentation_options.js?v=dbe360db"></script>
     <script src="../../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -419,7 +419,7 @@ document.write(`
                   
   <h1>Source code for ophyd_async.core._detector.standard_detector</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">asyncio</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Sequence</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Sequence</span>
 
 <span class="kn">from</span> <span class="nn">bluesky.protocols</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">Asset</span><span class="p">,</span>
@@ -436,8 +436,8 @@ document.write(`
 <span class="kn">from</span> <span class="nn">.._signal.signal</span> <span class="kn">import</span> <span class="n">SignalR</span>
 <span class="kn">from</span> <span class="nn">..async_status</span> <span class="kn">import</span> <span class="n">AsyncStatus</span>
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">merge_gathered_dicts</span>
-<span class="kn">from</span> <span class="nn">.detector_control</span> <span class="kn">import</span> <span class="n">C</span><span class="p">,</span> <span class="n">DetectorTrigger</span>
-<span class="kn">from</span> <span class="nn">.detector_writer</span> <span class="kn">import</span> <span class="n">D</span>
+<span class="kn">from</span> <span class="nn">.detector_control</span> <span class="kn">import</span> <span class="n">DetectorControl</span><span class="p">,</span> <span class="n">DetectorTrigger</span>
+<span class="kn">from</span> <span class="nn">.detector_writer</span> <span class="kn">import</span> <span class="n">DetectorWriter</span>
 
 
 <div class="viewcode-block" id="StandardDetector">
@@ -449,7 +449,6 @@ document.write(`
     <span class="n">Readable</span><span class="p">,</span>
     <span class="n">Triggerable</span><span class="p">,</span>
     <span class="n">WritesExternalAssets</span><span class="p">,</span>
-    <span class="n">Generic</span><span class="p">[</span><span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">],</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Detector with useful default behaviour.</span>
 
@@ -467,8 +466,8 @@ document.write(`
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">control</span><span class="p">:</span> <span class="n">C</span><span class="p">,</span>
-        <span class="n">data</span><span class="p">:</span> <span class="n">D</span><span class="p">,</span>
+        <span class="n">control</span><span class="p">:</span> <span class="n">DetectorControl</span><span class="p">,</span>
+        <span class="n">data</span><span class="p">:</span> <span class="n">DetectorWriter</span><span class="p">,</span>
         <span class="n">config_sigs</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">SignalR</span><span class="p">],</span>
         <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="o">**</span><span class="n">plugins</span><span class="p">:</span> <span class="n">Device</span><span class="p">,</span>
