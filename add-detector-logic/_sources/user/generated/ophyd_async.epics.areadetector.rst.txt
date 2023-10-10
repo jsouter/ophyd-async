@@ -34,7 +34,7 @@ ophyd\_async.epics.areadetector
       :template: custom-class-template.rst
       :nosignatures:
    
-      Pilatus
+      HDFStatsPilatus
       SingleTriggerDet
       FileWriteMode
       ImageMode

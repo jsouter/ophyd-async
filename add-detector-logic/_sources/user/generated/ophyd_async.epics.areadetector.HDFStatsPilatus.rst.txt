@@ -1,0 +1,47 @@
+.. note::
+
+    Ophyd async is included on a provisional basis until the v1.0 release and 
+    may change API on minor release numbers before then
+
+ophyd\_async.epics.areadetector.HDFStatsPilatus
+===============================================
+
+.. currentmodule:: ophyd_async.epics.areadetector
+
+.. autoclass:: HDFStatsPilatus
+   :members:
+   :show-inheritance:
+   :inherited-members:
+   :special-members: __call__, __add__, __mul__
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~HDFStatsPilatus.children
+      ~HDFStatsPilatus.collect_asset_docs
+      ~HDFStatsPilatus.connect
+      ~HDFStatsPilatus.describe
+      ~HDFStatsPilatus.describe_configuration
+      ~HDFStatsPilatus.read
+      ~HDFStatsPilatus.read_configuration
+      ~HDFStatsPilatus.set_name
+      ~HDFStatsPilatus.stage
+      ~HDFStatsPilatus.trigger
+      ~HDFStatsPilatus.unstage
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~HDFStatsPilatus.name
+      ~HDFStatsPilatus.parent
+   
+   
