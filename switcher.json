@@ -26,5 +26,9 @@
   {
     "version": "docs-and-readme",
     "url": "https://bluesky.github.io/ophyd-async/docs-and-readme/"
+  },
+  {
+    "version": "flyingpanda",
+    "url": "https://bluesky.github.io/ophyd-async/flyingpanda/"
   }
 ]
