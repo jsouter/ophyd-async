@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; ophyd-async 0.1.1.dev18+g75132a9 documentation</title>
+    <title>Index &#8212; ophyd-async 0.1.1.dev19+ge36fc0e documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
   <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
-    <script src="_static/documentation_options.js?v=a74ff5d5"></script>
+    <script src="_static/documentation_options.js?v=795826de"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -418,6 +418,12 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="user/generated/ophyd_async.core.ShapeProvider.html">ophyd_async.core.ShapeProvider</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user/generated/ophyd_async.core.StaticDirectoryProvider.html">ophyd_async.core.StaticDirectoryProvider</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user/generated/ophyd_async.core.StandardReadable.html">ophyd_async.core.StandardReadable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user/generated/ophyd_async.core.TriggerInfo.html">ophyd_async.core.TriggerInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user/generated/ophyd_async.core.DetectorGroupLogic.html">ophyd_async.core.DetectorGroupLogic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user/generated/ophyd_async.core.SameTriggerDetectorGroupLogic.html">ophyd_async.core.SameTriggerDetectorGroupLogic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user/generated/ophyd_async.core.TriggerLogic.html">ophyd_async.core.TriggerLogic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user/generated/ophyd_async.core.ScanSpecFlyable.html">ophyd_async.core.ScanSpecFlyable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user/generated/ophyd_async.core.HardwareTriggeredFlyable.html">ophyd_async.core.HardwareTriggeredFlyable</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user/generated/ophyd_async.core.NotConnected.html">ophyd_async.core.NotConnected</a></li>
 </ul>
 </li>
@@ -577,11 +583,17 @@ document.write(`
         <li><a href="user/generated/ophyd_async.core.SignalRW.html#ophyd_async.core.SignalRW.clear_sub">(ophyd_async.core.SignalRW method)</a>
 </li>
       </ul></li>
-      <li><a href="user/generated/ophyd_async.core.DetectorWriter.html#ophyd_async.core.DetectorWriter.close">close() (ophyd_async.core.DetectorWriter method)</a>
-</li>
-      <li><a href="user/generated/ophyd_async.core.StandardDetector.html#ophyd_async.core.StandardDetector.collect_asset_docs">collect_asset_docs() (ophyd_async.core.StandardDetector method)</a>
+      <li><a href="user/generated/ophyd_async.core.DetectorGroupLogic.html#ophyd_async.core.DetectorGroupLogic.close">close() (ophyd_async.core.DetectorGroupLogic method)</a>
 
       <ul>
+        <li><a href="user/generated/ophyd_async.core.DetectorWriter.html#ophyd_async.core.DetectorWriter.close">(ophyd_async.core.DetectorWriter method)</a>
+</li>
+      </ul></li>
+      <li><a href="user/generated/ophyd_async.core.DetectorGroupLogic.html#ophyd_async.core.DetectorGroupLogic.collect_asset_docs">collect_asset_docs() (ophyd_async.core.DetectorGroupLogic method)</a>
+
+      <ul>
+        <li><a href="user/generated/ophyd_async.core.StandardDetector.html#ophyd_async.core.StandardDetector.collect_asset_docs">(ophyd_async.core.StandardDetector method)</a>
+</li>
         <li><a href="user/generated/ophyd_async.epics.areadetector.HDFStatsPilatus.html#ophyd_async.epics.areadetector.HDFStatsPilatus.collect_asset_docs">(ophyd_async.epics.areadetector.HDFStatsPilatus method)</a>
 </li>
       </ul></li>
@@ -591,6 +603,10 @@ document.write(`
 
       <ul>
         <li><a href="user/generated/ophyd_async.core.DeviceVector.html#ophyd_async.core.DeviceVector.connect">(ophyd_async.core.DeviceVector method)</a>
+</li>
+        <li><a href="user/generated/ophyd_async.core.HardwareTriggeredFlyable.html#ophyd_async.core.HardwareTriggeredFlyable.connect">(ophyd_async.core.HardwareTriggeredFlyable method)</a>
+</li>
+        <li><a href="user/generated/ophyd_async.core.ScanSpecFlyable.html#ophyd_async.core.ScanSpecFlyable.connect">(ophyd_async.core.ScanSpecFlyable method)</a>
 </li>
         <li><a href="user/generated/ophyd_async.core.SignalBackend.html#ophyd_async.core.SignalBackend.connect">(ophyd_async.core.SignalBackend method)</a>
 </li>
@@ -641,6 +657,8 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="user/generated/ophyd_async.core.SignalBackend.html#ophyd_async.core.SignalBackend.datatype">datatype (ophyd_async.core.SignalBackend attribute)</a>
 </li>
+      <li><a href="user/generated/ophyd_async.core.TriggerInfo.html#ophyd_async.core.TriggerInfo.deadtime">deadtime (ophyd_async.core.TriggerInfo attribute)</a>
+</li>
       <li><a href="user/generated/ophyd_async.core.SignalR.html#ophyd_async.core.SignalR.describe">describe() (ophyd_async.core.SignalR method)</a>
 
       <ul>
@@ -649,12 +667,14 @@ document.write(`
       </ul></li>
       <li><a href="user/generated/ophyd_async.core.DetectorControl.html#ophyd_async.core.DetectorControl">DetectorControl (class in ophyd_async.core)</a>
 </li>
-      <li><a href="user/generated/ophyd_async.core.DetectorTrigger.html#ophyd_async.core.DetectorTrigger">DetectorTrigger (class in ophyd_async.core)</a>
+      <li><a href="user/generated/ophyd_async.core.DetectorGroupLogic.html#ophyd_async.core.DetectorGroupLogic">DetectorGroupLogic (class in ophyd_async.core)</a>
 </li>
-      <li><a href="user/generated/ophyd_async.core.DetectorWriter.html#ophyd_async.core.DetectorWriter">DetectorWriter (class in ophyd_async.core)</a>
+      <li><a href="user/generated/ophyd_async.core.DetectorTrigger.html#ophyd_async.core.DetectorTrigger">DetectorTrigger (class in ophyd_async.core)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="user/generated/ophyd_async.core.DetectorWriter.html#ophyd_async.core.DetectorWriter">DetectorWriter (class in ophyd_async.core)</a>
+</li>
       <li><a href="user/generated/ophyd_async.core.Device.html#ophyd_async.core.Device">Device (class in ophyd_async.core)</a>
 </li>
       <li><a href="user/generated/ophyd_async.core.DeviceCollector.html#ophyd_async.core.DeviceCollector">DeviceCollector (class in ophyd_async.core)</a>
@@ -666,7 +686,11 @@ document.write(`
       <li><a href="user/generated/ophyd_async.core.DirectoryProvider.html#ophyd_async.core.DirectoryProvider">DirectoryProvider (class in ophyd_async.core)</a>
 </li>
       <li><a href="user/generated/ophyd_async.core.DetectorControl.html#ophyd_async.core.DetectorControl.disarm">disarm() (ophyd_async.core.DetectorControl method)</a>
+
+      <ul>
+        <li><a href="user/generated/ophyd_async.core.DetectorGroupLogic.html#ophyd_async.core.DetectorGroupLogic.disarm">(ophyd_async.core.DetectorGroupLogic method)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -681,10 +705,12 @@ document.write(`
 </li>
       <li><a href="user/generated/ophyd_async.epics.demo.EnergyMode.html#ophyd_async.epics.demo.EnergyMode">EnergyMode (class in ophyd_async.epics.demo)</a>
 </li>
-      <li><a href="user/generated/ophyd_async.epics.signal.epics_signal_r.html#ophyd_async.epics.signal.epics_signal_r">epics_signal_r() (in module ophyd_async.epics.signal)</a>
+      <li><a href="user/generated/ophyd_async.core.DetectorGroupLogic.html#ophyd_async.core.DetectorGroupLogic.ensure_armed">ensure_armed() (ophyd_async.core.DetectorGroupLogic method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="user/generated/ophyd_async.epics.signal.epics_signal_r.html#ophyd_async.epics.signal.epics_signal_r">epics_signal_r() (in module ophyd_async.epics.signal)</a>
+</li>
       <li><a href="user/generated/ophyd_async.epics.signal.epics_signal_rw.html#ophyd_async.epics.signal.epics_signal_rw">epics_signal_rw() (in module ophyd_async.epics.signal)</a>
 </li>
       <li><a href="user/generated/ophyd_async.epics.signal.epics_signal_w.html#ophyd_async.epics.signal.epics_signal_w">epics_signal_w() (in module ophyd_async.epics.signal)</a>
@@ -761,10 +787,12 @@ document.write(`
 <h2 id="H">H</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="user/generated/ophyd_async.epics.areadetector.HDFStatsPilatus.html#ophyd_async.epics.areadetector.HDFStatsPilatus">HDFStatsPilatus (class in ophyd_async.epics.areadetector)</a>
+      <li><a href="user/generated/ophyd_async.core.HardwareTriggeredFlyable.html#ophyd_async.core.HardwareTriggeredFlyable">HardwareTriggeredFlyable (class in ophyd_async.core)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="user/generated/ophyd_async.epics.areadetector.HDFStatsPilatus.html#ophyd_async.epics.areadetector.HDFStatsPilatus">HDFStatsPilatus (class in ophyd_async.epics.areadetector)</a>
+</li>
       <li><a href="user/generated/ophyd_async.epics.demo.EnergyMode.html#ophyd_async.epics.demo.EnergyMode.high">high (ophyd_async.epics.demo.EnergyMode attribute)</a>
 </li>
   </ul></td>
@@ -841,12 +869,14 @@ document.write(`
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="user/generated/ophyd_async.epics.areadetector.FileWriteMode.html#ophyd_async.epics.areadetector.FileWriteMode.ljust">ljust() (ophyd_async.epics.areadetector.FileWriteMode method)</a>
+      <li><a href="user/generated/ophyd_async.core.TriggerInfo.html#ophyd_async.core.TriggerInfo.livetime">livetime (ophyd_async.core.TriggerInfo attribute)</a>
 </li>
-      <li><a href="user/generated/ophyd_async.epics.demo.EnergyMode.html#ophyd_async.epics.demo.EnergyMode.low">low (ophyd_async.epics.demo.EnergyMode attribute)</a>
+      <li><a href="user/generated/ophyd_async.epics.areadetector.FileWriteMode.html#ophyd_async.epics.areadetector.FileWriteMode.ljust">ljust() (ophyd_async.epics.areadetector.FileWriteMode method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="user/generated/ophyd_async.epics.demo.EnergyMode.html#ophyd_async.epics.demo.EnergyMode.low">low (ophyd_async.epics.demo.EnergyMode attribute)</a>
+</li>
       <li><a href="user/generated/ophyd_async.epics.areadetector.FileWriteMode.html#ophyd_async.epics.areadetector.FileWriteMode.lower">lower() (ophyd_async.epics.areadetector.FileWriteMode method)</a>
 </li>
       <li><a href="user/generated/ophyd_async.epics.areadetector.FileWriteMode.html#ophyd_async.epics.areadetector.FileWriteMode.lstrip">lstrip() (ophyd_async.epics.areadetector.FileWriteMode method)</a>
@@ -905,6 +935,10 @@ document.write(`
       <ul>
         <li><a href="user/generated/ophyd_async.core.DeviceVector.html#ophyd_async.core.DeviceVector.name">(ophyd_async.core.DeviceVector property)</a>
 </li>
+        <li><a href="user/generated/ophyd_async.core.HardwareTriggeredFlyable.html#ophyd_async.core.HardwareTriggeredFlyable.name">(ophyd_async.core.HardwareTriggeredFlyable property)</a>
+</li>
+        <li><a href="user/generated/ophyd_async.core.ScanSpecFlyable.html#ophyd_async.core.ScanSpecFlyable.name">(ophyd_async.core.ScanSpecFlyable property)</a>
+</li>
         <li><a href="user/generated/ophyd_async.core.StandardDetector.html#ophyd_async.core.StandardDetector.name">(ophyd_async.core.StandardDetector property)</a>
 </li>
         <li><a href="user/generated/ophyd_async.core.StandardReadable.html#ophyd_async.core.StandardReadable.name">(ophyd_async.core.StandardReadable property)</a>
@@ -936,6 +970,8 @@ document.write(`
 </li>
       <li><a href="user/generated/ophyd_async.core.NotConnected.html#ophyd_async.core.NotConnected">NotConnected</a>
 </li>
+      <li><a href="user/generated/ophyd_async.core.TriggerInfo.html#ophyd_async.core.TriggerInfo.num">num (ophyd_async.core.TriggerInfo attribute)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -944,8 +980,12 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="user/generated/ophyd_async.core.observe_value.html#ophyd_async.core.observe_value">observe_value() (in module ophyd_async.core)</a>
 </li>
-      <li><a href="user/generated/ophyd_async.core.DetectorWriter.html#ophyd_async.core.DetectorWriter.open">open() (ophyd_async.core.DetectorWriter method)</a>
+      <li><a href="user/generated/ophyd_async.core.DetectorGroupLogic.html#ophyd_async.core.DetectorGroupLogic.open">open() (ophyd_async.core.DetectorGroupLogic method)</a>
+
+      <ul>
+        <li><a href="user/generated/ophyd_async.core.DetectorWriter.html#ophyd_async.core.DetectorWriter.open">(ophyd_async.core.DetectorWriter method)</a>
 </li>
+      </ul></li>
       <li>
     ophyd_async
 
@@ -1028,8 +1068,6 @@ document.write(`
         <li><a href="user/generated/ophyd_async.panda.SeqTable.html#ophyd_async.panda.SeqTable.pop">(ophyd_async.panda.SeqTable method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="user/generated/ophyd_async.core.DeviceVector.html#ophyd_async.core.DeviceVector.popitem">popitem() (ophyd_async.core.DeviceVector method)</a>
 
       <ul>
@@ -1038,6 +1076,10 @@ document.write(`
         <li><a href="user/generated/ophyd_async.panda.SeqTable.html#ophyd_async.panda.SeqTable.popitem">(ophyd_async.panda.SeqTable method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="user/generated/ophyd_async.core.TriggerLogic.html#ophyd_async.core.TriggerLogic.prepare">prepare() (ophyd_async.core.TriggerLogic method)</a>
+</li>
       <li><a href="user/generated/ophyd_async.panda.PulseBlock.html#ophyd_async.panda.PulseBlock">PulseBlock (class in ophyd_async.panda)</a>
 </li>
       <li><a href="user/generated/ophyd_async.core.SignalBackend.html#ophyd_async.core.SignalBackend.put">put() (ophyd_async.core.SignalBackend method)</a>
@@ -1090,7 +1132,11 @@ document.write(`
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="user/generated/ophyd_async.core.SameTriggerDetectorGroupLogic.html#ophyd_async.core.SameTriggerDetectorGroupLogic">SameTriggerDetectorGroupLogic (class in ophyd_async.core)</a>
+</li>
       <li><a href="user/generated/ophyd_async.epics.demo.SampleStage.html#ophyd_async.epics.demo.SampleStage">SampleStage (class in ophyd_async.epics.demo)</a>
+</li>
+      <li><a href="user/generated/ophyd_async.core.ScanSpecFlyable.html#ophyd_async.core.ScanSpecFlyable">ScanSpecFlyable (class in ophyd_async.core)</a>
 </li>
       <li><a href="user/generated/ophyd_async.epics.demo.Sensor.html#ophyd_async.epics.demo.Sensor">Sensor (class in ophyd_async.epics.demo)</a>
 </li>
@@ -1100,9 +1146,13 @@ document.write(`
 </li>
       <li><a href="user/generated/ophyd_async.panda.SeqTrigger.html#ophyd_async.panda.SeqTrigger">SeqTrigger (class in ophyd_async.panda)</a>
 </li>
-      <li><a href="user/generated/ophyd_async.core.SignalRW.html#ophyd_async.core.SignalRW.set">set() (ophyd_async.core.SignalRW method)</a>
+      <li><a href="user/generated/ophyd_async.core.HardwareTriggeredFlyable.html#ophyd_async.core.HardwareTriggeredFlyable.set">set() (ophyd_async.core.HardwareTriggeredFlyable method)</a>
 
       <ul>
+        <li><a href="user/generated/ophyd_async.core.ScanSpecFlyable.html#ophyd_async.core.ScanSpecFlyable.set">(ophyd_async.core.ScanSpecFlyable method)</a>
+</li>
+        <li><a href="user/generated/ophyd_async.core.SignalRW.html#ophyd_async.core.SignalRW.set">(ophyd_async.core.SignalRW method)</a>
+</li>
         <li><a href="user/generated/ophyd_async.core.SignalW.html#ophyd_async.core.SignalW.set">(ophyd_async.core.SignalW method)</a>
 </li>
       </ul></li>
@@ -1116,6 +1166,10 @@ document.write(`
 
       <ul>
         <li><a href="user/generated/ophyd_async.core.DeviceVector.html#ophyd_async.core.DeviceVector.set_name">(ophyd_async.core.DeviceVector method)</a>
+</li>
+        <li><a href="user/generated/ophyd_async.core.HardwareTriggeredFlyable.html#ophyd_async.core.HardwareTriggeredFlyable.set_name">(ophyd_async.core.HardwareTriggeredFlyable method)</a>
+</li>
+        <li><a href="user/generated/ophyd_async.core.ScanSpecFlyable.html#ophyd_async.core.ScanSpecFlyable.set_name">(ophyd_async.core.ScanSpecFlyable method)</a>
 </li>
         <li><a href="user/generated/ophyd_async.core.StandardDetector.html#ophyd_async.core.StandardDetector.set_name">(ophyd_async.core.StandardDetector method)</a>
 </li>
@@ -1156,6 +1210,8 @@ document.write(`
 </li>
       <li><a href="user/generated/ophyd_async.core.set_sim_value.html#ophyd_async.core.set_sim_value">set_sim_value() (in module ophyd_async.core)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="user/generated/ophyd_async.core.DeviceVector.html#ophyd_async.core.DeviceVector.setdefault">setdefault() (ophyd_async.core.DeviceVector method)</a>
 
       <ul>
@@ -1164,8 +1220,6 @@ document.write(`
         <li><a href="user/generated/ophyd_async.panda.SeqTable.html#ophyd_async.panda.SeqTable.setdefault">(ophyd_async.panda.SeqTable method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="user/generated/ophyd_async.core.ShapeProvider.html#ophyd_async.core.ShapeProvider">ShapeProvider (class in ophyd_async.core)</a>
 </li>
       <li><a href="user/generated/ophyd_async.core.Signal.html#ophyd_async.core.Signal">Signal (class in ophyd_async.core)</a>
@@ -1216,11 +1270,15 @@ document.write(`
 </li>
       <li><a href="user/generated/ophyd_async.core.StandardReadable.html#ophyd_async.core.StandardReadable">StandardReadable (class in ophyd_async.core)</a>
 </li>
+      <li><a href="user/generated/ophyd_async.core.TriggerLogic.html#ophyd_async.core.TriggerLogic.start">start() (ophyd_async.core.TriggerLogic method)</a>
+</li>
       <li><a href="user/generated/ophyd_async.epics.demo.start_ioc_subprocess.html#ophyd_async.epics.demo.start_ioc_subprocess">start_ioc_subprocess() (in module ophyd_async.epics.demo)</a>
 </li>
       <li><a href="user/generated/ophyd_async.epics.areadetector.FileWriteMode.html#ophyd_async.epics.areadetector.FileWriteMode.startswith">startswith() (ophyd_async.epics.areadetector.FileWriteMode method)</a>
 </li>
       <li><a href="user/generated/ophyd_async.core.StaticDirectoryProvider.html#ophyd_async.core.StaticDirectoryProvider">StaticDirectoryProvider (class in ophyd_async.core)</a>
+</li>
+      <li><a href="user/generated/ophyd_async.core.TriggerLogic.html#ophyd_async.core.TriggerLogic.stop">stop() (ophyd_async.core.TriggerLogic method)</a>
 </li>
       <li><a href="user/generated/ophyd_async.epics.areadetector.FileWriteMode.html#ophyd_async.epics.areadetector.FileWriteMode.strip">strip() (ophyd_async.epics.areadetector.FileWriteMode method)</a>
 </li>
@@ -1248,14 +1306,22 @@ document.write(`
 </li>
       <li><a href="user/generated/ophyd_async.epics.areadetector.FileWriteMode.html#ophyd_async.epics.areadetector.FileWriteMode.translate">translate() (ophyd_async.epics.areadetector.FileWriteMode method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="user/generated/ophyd_async.core.TriggerInfo.html#ophyd_async.core.TriggerInfo.trigger">trigger (ophyd_async.core.TriggerInfo attribute)</a>
+</li>
       <li><a href="user/generated/ophyd_async.core.StandardDetector.html#ophyd_async.core.StandardDetector.trigger">trigger() (ophyd_async.core.StandardDetector method)</a>
 
       <ul>
         <li><a href="user/generated/ophyd_async.epics.areadetector.HDFStatsPilatus.html#ophyd_async.epics.areadetector.HDFStatsPilatus.trigger">(ophyd_async.epics.areadetector.HDFStatsPilatus method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="user/generated/ophyd_async.core.TriggerLogic.html#ophyd_async.core.TriggerLogic.trigger_info">trigger_info() (ophyd_async.core.TriggerLogic method)</a>
+</li>
+      <li><a href="user/generated/ophyd_async.core.TriggerInfo.html#ophyd_async.core.TriggerInfo">TriggerInfo (class in ophyd_async.core)</a>
+</li>
+      <li><a href="user/generated/ophyd_async.core.TriggerLogic.html#ophyd_async.core.TriggerLogic">TriggerLogic (class in ophyd_async.core)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -1312,8 +1378,12 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="user/generated/ophyd_async.core.wait_for_connection.html#ophyd_async.core.wait_for_connection">wait_for_connection() (in module ophyd_async.core)</a>
 </li>
-      <li><a href="user/generated/ophyd_async.core.DetectorWriter.html#ophyd_async.core.DetectorWriter.wait_for_index">wait_for_index() (ophyd_async.core.DetectorWriter method)</a>
+      <li><a href="user/generated/ophyd_async.core.DetectorGroupLogic.html#ophyd_async.core.DetectorGroupLogic.wait_for_index">wait_for_index() (ophyd_async.core.DetectorGroupLogic method)</a>
+
+      <ul>
+        <li><a href="user/generated/ophyd_async.core.DetectorWriter.html#ophyd_async.core.DetectorWriter.wait_for_index">(ophyd_async.core.DetectorWriter method)</a>
 </li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="user/generated/ophyd_async.core.wait_for_value.html#ophyd_async.core.wait_for_value">wait_for_value() (in module ophyd_async.core)</a>

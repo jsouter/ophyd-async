@@ -1,0 +1,50 @@
+.. note::
+
+    Ophyd async is included on a provisional basis until the v1.0 release and 
+    may change API on minor release numbers before then
+
+ophyd\_async.core.ScanSpecFlyable
+=================================
+
+.. currentmodule:: ophyd_async.core
+
+.. autoclass:: ScanSpecFlyable
+   :members:
+   :show-inheritance:
+   :inherited-members:
+   :special-members: __call__, __add__, __mul__
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~ScanSpecFlyable.children
+      ~ScanSpecFlyable.collect_asset_docs
+      ~ScanSpecFlyable.complete
+      ~ScanSpecFlyable.connect
+      ~ScanSpecFlyable.describe_collect
+      ~ScanSpecFlyable.describe_configuration
+      ~ScanSpecFlyable.kickoff
+      ~ScanSpecFlyable.pause
+      ~ScanSpecFlyable.read_configuration
+      ~ScanSpecFlyable.resume
+      ~ScanSpecFlyable.set
+      ~ScanSpecFlyable.set_name
+      ~ScanSpecFlyable.stage
+      ~ScanSpecFlyable.unstage
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ScanSpecFlyable.name
+      ~ScanSpecFlyable.parent
+   
+   
