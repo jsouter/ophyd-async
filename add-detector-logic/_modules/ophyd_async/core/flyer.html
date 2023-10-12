@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ophyd_async.core.flyer &#8212; ophyd-async 0.1.1.dev21+g44e30de documentation</title>
+    <title>ophyd_async.core.flyer &#8212; ophyd-async 0.1.1.dev22+ged55521 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
   <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
-    <script src="../../../_static/documentation_options.js?v=2bfef33e"></script>
+    <script src="../../../_static/documentation_options.js?v=5fc59083"></script>
     <script src="../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -428,27 +428,21 @@ document.write(`
     <span class="n">Dict</span><span class="p">,</span>
     <span class="n">Generic</span><span class="p">,</span>
     <span class="n">List</span><span class="p">,</span>
-    <span class="n">Literal</span><span class="p">,</span>
     <span class="n">Optional</span><span class="p">,</span>
     <span class="n">Sequence</span><span class="p">,</span>
     <span class="n">TypeVar</span><span class="p">,</span>
-    <span class="n">Union</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">bluesky.protocols</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">Asset</span><span class="p">,</span>
     <span class="n">Collectable</span><span class="p">,</span>
     <span class="n">Descriptor</span><span class="p">,</span>
     <span class="n">Flyable</span><span class="p">,</span>
     <span class="n">Movable</span><span class="p">,</span>
-    <span class="n">Pausable</span><span class="p">,</span>
     <span class="n">Reading</span><span class="p">,</span>
     <span class="n">Stageable</span><span class="p">,</span>
     <span class="n">WritesExternalAssets</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">scanspec.core</span> <span class="kn">import</span> <span class="n">Frames</span><span class="p">,</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">scanspec.specs</span> <span class="kn">import</span> <span class="n">DURATION</span><span class="p">,</span> <span class="n">Spec</span>
 
 <span class="kn">from</span> <span class="nn">.async_status</span> <span class="kn">import</span> <span class="n">AsyncStatus</span>
 <span class="kn">from</span> <span class="nn">.detector</span> <span class="kn">import</span> <span class="n">DetectorControl</span><span class="p">,</span> <span class="n">DetectorTrigger</span><span class="p">,</span> <span class="n">DetectorWriter</span>
@@ -730,51 +724,6 @@ document.write(`
             <span class="bp">self</span><span class="o">.</span><span class="n">_detector_group_logic</span><span class="o">.</span><span class="n">disarm</span><span class="p">(),</span>
         <span class="p">)</span></div>
 
-
-
-<span class="n">ScanAxis</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">Device</span><span class="p">,</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;DURATION&quot;</span><span class="p">]]</span>
-
-
-<div class="viewcode-block" id="ScanSpecFlyable">
-<a class="viewcode-back" href="../../../user/generated/ophyd_async.core.ScanSpecFlyable.html#ophyd_async.core.ScanSpecFlyable">[docs]</a>
-<span class="k">class</span> <span class="nc">ScanSpecFlyable</span><span class="p">(</span><span class="n">HardwareTriggeredFlyable</span><span class="p">[</span><span class="n">Path</span><span class="p">],</span> <span class="n">Pausable</span><span class="p">):</span>
-    <span class="n">_spec</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Spec</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">_frames</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Frames</span><span class="p">]</span> <span class="o">=</span> <span class="p">()</span>
-
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Spec</span><span class="p">[</span><span class="n">ScanAxis</span><span class="p">]):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Arm detectors and setup trajectories&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">value</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_spec</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_spec</span> <span class="o">=</span> <span class="n">value</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_frames</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
-        <span class="k">await</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_frames</span><span class="p">))</span>
-
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">pause</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fly_status</span><span class="p">,</span> <span class="s2">&quot;Kickoff not run&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_fly_status</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
-        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">unstage</span><span class="p">()</span>
-        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_detector_group_logic</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
-        <span class="c1"># Next frame will have index 0, but will be self._current_frame</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_offset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_frame</span>
-        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prepare</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_frames</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_current_frame</span><span class="p">))</span>
-
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">resume</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fly_status</span><span class="p">,</span> <span class="s2">&quot;Kickoff not run&quot;</span>
-        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fly_status</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">cancelled</span><span class="p">(),</span> <span class="s2">&quot;You didn&#39;t call pause&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_fly_status</span><span class="o">.</span><span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fly</span><span class="p">())</span></div>
-
-
-
-<span class="k">def</span> <span class="nf">get_duration</span><span class="p">(</span><span class="n">frames</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Frames</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
-    <span class="k">for</span> <span class="n">fs</span> <span class="ow">in</span> <span class="n">frames</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">DURATION</span> <span class="ow">in</span> <span class="n">fs</span><span class="o">.</span><span class="n">axes</span><span class="p">():</span>
-            <span class="n">durations</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">midpoints</span><span class="p">[</span><span class="n">DURATION</span><span class="p">]</span>
-            <span class="n">first_duration</span> <span class="o">=</span> <span class="n">durations</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">durations</span> <span class="o">==</span> <span class="n">first_duration</span><span class="p">):</span>
-                <span class="c1"># Constant duration, return it</span>
-                <span class="k">return</span> <span class="n">first_duration</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="kc">None</span>
-    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Duration not specified in Spec&quot;</span><span class="p">)</span>
 </pre></div>
 
                 </article>

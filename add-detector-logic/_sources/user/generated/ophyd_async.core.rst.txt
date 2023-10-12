@@ -67,7 +67,6 @@ ophyd\_async.core
       DetectorGroupLogic
       SameTriggerDetectorGroupLogic
       TriggerLogic
-      ScanSpecFlyable
       HardwareTriggeredFlyable
    
    

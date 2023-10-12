@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ophyd_async.core.detector &#8212; ophyd-async 0.1.1.dev21+g44e30de documentation</title>
+    <title>ophyd_async.core.detector &#8212; ophyd-async 0.1.1.dev22+ged55521 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
   <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
-    <script src="../../../_static/documentation_options.js?v=2bfef33e"></script>
+    <script src="../../../_static/documentation_options.js?v=5fc59083"></script>
     <script src="../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -549,10 +549,6 @@ document.write(`
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Detector with useful default behaviour.</span>
 
-<span class="sd">    Can be supplied extra devices such that they can also be accessed on the detector.</span>
-<span class="sd">    This allows for similar on-the-fly device generation as what is currently done for</span>
-<span class="sd">    the ophyd_async.panda.PandA object.</span>
-
 <span class="sd">    Must be supplied instances of classes that inherit from DetectorControl and</span>
 <span class="sd">    DetectorData, to dictate how the detector will be controlled (i.e. arming and</span>
 <span class="sd">    disarming) as well as how the detector data will be written (i.e. opening and</span>
@@ -567,7 +563,6 @@ document.write(`
         <span class="n">data</span><span class="p">:</span> <span class="n">DetectorWriter</span><span class="p">,</span>
         <span class="n">config_sigs</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">SignalR</span><span class="p">],</span>
         <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="o">**</span><span class="n">plugins</span><span class="p">:</span> <span class="n">Device</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Parameters</span>
@@ -585,7 +580,6 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_config_sigs</span> <span class="o">=</span> <span class="n">config_sigs</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_describe</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Descriptor</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">plugins</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 
     <span class="nd">@property</span>
