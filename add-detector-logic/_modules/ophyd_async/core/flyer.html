@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ophyd_async.core.flyer &#8212; ophyd-async 0.1.1.dev22+ged55521 documentation</title>
+    <title>ophyd_async.core.flyer &#8212; ophyd-async 0.1.1.dev23+g334c5d7 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
   <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
-    <script src="../../../_static/documentation_options.js?v=5fc59083"></script>
+    <script src="../../../_static/documentation_options.js?v=ccd53728"></script>
     <script src="../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -489,7 +489,7 @@ document.write(`
 <div class="viewcode-block" id="DetectorGroupLogic.collect_asset_docs">
 <a class="viewcode-back" href="../../../user/generated/ophyd_async.core.DetectorGroupLogic.html#ophyd_async.core.DetectorGroupLogic.collect_asset_docs">[docs]</a>
     <span class="nd">@abstractmethod</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">collect_asset_docs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="n">Asset</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">collect_asset_docs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="n">Asset</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Collect asset docs from all writers&quot;&quot;&quot;</span></div>
 
 
@@ -546,13 +546,13 @@ document.write(`
                     <span class="sa">f</span><span class="s2">&quot;Detector </span><span class="si">{</span><span class="n">controller</span><span class="si">}</span><span class="s2"> needs at least </span><span class="si">{</span><span class="n">required</span><span class="si">}</span><span class="s2">s deadtime, &quot;</span>
                     <span class="sa">f</span><span class="s2">&quot;but trigger logic provides only </span><span class="si">{</span><span class="n">trigger_info</span><span class="o">.</span><span class="n">deadtime</span><span class="si">}</span><span class="s2">s&quot;</span>
                 <span class="p">)</span>
-            <span class="n">statuses</span> <span class="o">=</span> <span class="k">await</span> <span class="n">gather_list</span><span class="p">(</span>
+            <span class="n">statuses</span> <span class="o">=</span> <span class="n">gather_list</span><span class="p">(</span>
                 <span class="n">controller</span><span class="o">.</span><span class="n">arm</span><span class="p">(</span>
                     <span class="n">trigger</span><span class="o">=</span><span class="n">trigger_info</span><span class="o">.</span><span class="n">trigger</span><span class="p">,</span> <span class="n">exposure</span><span class="o">=</span><span class="n">trigger_info</span><span class="o">.</span><span class="n">livetime</span>
                 <span class="p">)</span>
                 <span class="k">for</span> <span class="n">controller</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">controllers</span>
             <span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_arm_status</span> <span class="o">=</span> <span class="n">AsyncStatus</span><span class="p">(</span><span class="n">gather_list</span><span class="p">(</span><span class="n">statuses</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_arm_status</span> <span class="o">=</span> <span class="n">AsyncStatus</span><span class="p">(</span><span class="n">statuses</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_trigger_info</span> <span class="o">=</span> <span class="n">trigger_info</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arm_status</span>
 
@@ -560,11 +560,7 @@ document.write(`
         <span class="c1"># the below is confusing: gather_list does return an awaitable, but it itself</span>
         <span class="c1"># is a coroutine so we must call await twice...</span>
         <span class="n">indices_written</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span>
-            <span class="k">await</span> <span class="p">(</span>
-                <span class="k">await</span> <span class="n">gather_list</span><span class="p">(</span>
-                    <span class="n">writer</span><span class="o">.</span><span class="n">get_indices_written</span><span class="p">()</span> <span class="k">for</span> <span class="n">writer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">writers</span>
-                <span class="p">)</span>
-            <span class="p">)</span>
+            <span class="k">await</span> <span class="n">gather_list</span><span class="p">(</span><span class="n">writer</span><span class="o">.</span><span class="n">get_indices_written</span><span class="p">()</span> <span class="k">for</span> <span class="n">writer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">writers</span><span class="p">)</span>
         <span class="p">)</span>
         <span class="k">for</span> <span class="n">writer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">writers</span><span class="p">:</span>
             <span class="k">async</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">writer</span><span class="o">.</span><span class="n">collect_stream_docs</span><span class="p">(</span><span class="n">indices_written</span><span class="p">):</span>
