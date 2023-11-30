@@ -34,5 +34,9 @@
   {
     "version": "pandahdf",
     "url": "https://jsouter.github.io/ophyd-async/pandahdf/"
+  },
+  {
+    "version": "pandahdfv2",
+    "url": "https://jsouter.github.io/ophyd-async/pandahdfv2/"
   }
 ]
