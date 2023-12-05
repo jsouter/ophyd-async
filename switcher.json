@@ -4,6 +4,10 @@
     "url": "https://jsouter.github.io/ophyd-async/main/"
   },
   {
+    "version": "v0.1.0",
+    "url": "https://jsouter.github.io/ophyd-async/v0.1.0/"
+  },
+  {
     "version": "add-detector-logic",
     "url": "https://jsouter.github.io/ophyd-async/add-detector-logic/"
   },
@@ -32,7 +36,7 @@
     "url": "https://jsouter.github.io/ophyd-async/pandahdf/"
   },
   {
-    "version": "v0.1.0",
-    "url": "https://jsouter.github.io/ophyd-async/v0.1.0/"
+    "version": "pandahdfv2",
+    "url": "https://jsouter.github.io/ophyd-async/pandahdfv2/"
   }
 ]
