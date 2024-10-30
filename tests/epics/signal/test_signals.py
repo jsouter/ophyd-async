@@ -44,7 +44,8 @@ from ophyd_async.epics.core import (
 )
 from ophyd_async.epics.core._signal import _epics_signal_backend  # noqa: PLC2701
 
-RECORDS = str(Path(__file__).parent / "test_records.db")
+CA_PVA_RECORDS = str(Path(__file__).parent / "test_records.db")
+PVA_RECORDS = str(Path(__file__).parent / "test_records_pva.db")
 PV_PREFIX = "".join(random.choice(string.ascii_lowercase) for _ in range(12))
 
 Protocol = Literal["ca", "pva"]
@@ -112,13 +113,19 @@ async def _make_backend(typ: type | None, protocol: str, suff: str, timeout=10.0
 # tests interfering with each other
 @pytest.fixture(scope="module")
 def ioc(request: pytest.FixtureRequest, tmpdir_factory) -> subprocess.Popen:
-    with open(RECORDS) as f:
-        template = f.read()
+    with open(CA_PVA_RECORDS) as f:
+        ca_pva_template = f.read()
+    with open(PVA_RECORDS) as f:
+        pva_template = f.read()
+
+    template = ca_pva_template.replace("$(R)", "ca:")
+    template += ca_pva_template.replace("$(R)", "pva:")
+    template += pva_template.replace("$(R)", "pva:")
+
     # expand template to have pva and ca versions of each templated record
     ALL_RECORDS = tmpdir_factory.mktemp("template") / "test_records.db"
     with open(ALL_RECORDS, "w") as f:
-        f.write(template.replace("$(R)", "ca:"))
-        f.write(template.replace("$(R)", "pva:"))
+        f.write(template)
     # it would maybe make more sense to have two files: CA+PVA.db and PVA.db
     process = subprocess.Popen(
         [
