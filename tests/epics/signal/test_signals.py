@@ -112,31 +112,18 @@ async def _make_backend(typ: type | None, protocol: str, suff: str, timeout=10.0
 # we need to add a record for every PV that we will modify in tests to stop
 # tests interfering with each other
 @pytest.fixture(scope="module")
-def ioc(request: pytest.FixtureRequest, tmpdir_factory) -> subprocess.Popen:
-    with open(CA_PVA_RECORDS) as f:
-        ca_pva_template = f.read()
-    with open(PVA_RECORDS) as f:
-        pva_template = f.read()
+def ioc():
+    template_args = ["-m", f"P={PV_PREFIX}:,R=ca:", "-d", CA_PVA_RECORDS]
+    template_args += ["-m", f"P={PV_PREFIX}:,R=pva:", "-d", CA_PVA_RECORDS]
+    template_args += ["-m", f"P={PV_PREFIX}:,R=pva:", "-d", PVA_RECORDS]
 
-    template = ca_pva_template.replace("$(R)", "ca:")
-    template += ca_pva_template.replace("$(R)", "pva:")
-    template += pva_template.replace("$(R)", "pva:")
-
-    # expand template to have pva and ca versions of each templated record
-    ALL_RECORDS = tmpdir_factory.mktemp("template") / "test_records.db"
-    with open(ALL_RECORDS, "w") as f:
-        f.write(template)
-    # it would maybe make more sense to have two files: CA+PVA.db and PVA.db
     process = subprocess.Popen(
         [
             sys.executable,
             "-m",
             "epicscorelibs.ioc",
-            "-m",
-            f"P={PV_PREFIX}:",
-            "-d",
-            ALL_RECORDS,
-        ],
+        ]
+        + template_args,
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
