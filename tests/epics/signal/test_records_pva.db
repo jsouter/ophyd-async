@@ -5,13 +5,6 @@ record(waveform, "$(P)$(R)int8a") {
   field(PINI, "YES")
 }
 
-record(waveform, "$(P)$(R)int16a") {
-  field(NELM, "3")
-  field(FTVL, "SHORT")
-  field(INP, {const:[-32768, 32767]})
-  field(PINI, "YES")
-}
-
 record(waveform, "$(P)$(R)uint16a") {
   field(NELM, "3")
   field(FTVL, "USHORT")

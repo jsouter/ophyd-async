@@ -2,8 +2,6 @@ import asyncio
 import os
 import random
 import string
-import subprocess
-import sys
 import time
 from collections.abc import Sequence
 from contextlib import closing
@@ -16,7 +14,6 @@ from unittest.mock import ANY
 import bluesky.plan_stubs as bps
 import numpy as np
 import pytest
-from aioca import purge_channel_caches
 from bluesky.protocols import Reading
 from bluesky.run_engine import RunEngine
 from event_model import DataKey, Limits, LimitsRange
@@ -43,6 +40,7 @@ from ophyd_async.epics.core import (
     epics_signal_x,
 )
 from ophyd_async.epics.core._signal import _epics_signal_backend  # noqa: PLC2701
+from ophyd_async.epics.testing.utils import Template, create_device_and_ioc_fixtures
 
 CA_PVA_RECORDS = str(Path(__file__).parent / "test_records.db")
 PVA_RECORDS = str(Path(__file__).parent / "test_records_pva.db")
@@ -93,11 +91,13 @@ class DeviceTestRecordsGroup(Device):
         return self._all_signals[protocol][name]
 
 
-@pytest.fixture
-async def device_test_records() -> DeviceTestRecordsGroup:
-    device = DeviceTestRecordsGroup(PV_PREFIX)
-    await device.connect()
-    return device
+ioc, device_test_records = create_device_and_ioc_fixtures(
+    DeviceTestRecordsGroup,
+    PV_PREFIX,
+    Template(CA_PVA_RECORDS, f"P={PV_PREFIX}:,R=ca:"),
+    Template(CA_PVA_RECORDS, f"P={PV_PREFIX}:,R=pva:"),
+    Template(PVA_RECORDS, f"P={PV_PREFIX}:,R=pva:"),
+)
 
 
 async def _make_backend(typ: type | None, protocol: str, suff: str, timeout=10.0):
@@ -106,46 +106,6 @@ async def _make_backend(typ: type | None, protocol: str, suff: str, timeout=10.0
     backend = _epics_signal_backend(typ, pv, pv)
     await backend.connect(timeout=timeout)
     return backend
-
-
-# Use a module level fixture per protocol so it's fast to run tests. This means
-# we need to add a record for every PV that we will modify in tests to stop
-# tests interfering with each other
-@pytest.fixture(scope="module")
-def ioc():
-    template_args = ["-m", f"P={PV_PREFIX}:,R=ca:", "-d", CA_PVA_RECORDS]
-    template_args += ["-m", f"P={PV_PREFIX}:,R=pva:", "-d", CA_PVA_RECORDS]
-    template_args += ["-m", f"P={PV_PREFIX}:,R=pva:", "-d", PVA_RECORDS]
-
-    process = subprocess.Popen(
-        [
-            sys.executable,
-            "-m",
-            "epicscorelibs.ioc",
-        ]
-        + template_args,
-        stdin=subprocess.PIPE,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        universal_newlines=True,
-    )
-
-    start_time = time.monotonic()
-    while "iocRun: All initialization complete" not in (
-        process.stdout.readline().strip()  # type: ignore
-    ):
-        if time.monotonic() - start_time > 10:
-            raise TimeoutError("IOC did not start in time")
-
-    yield process
-
-    # close backend caches before the event loop
-    purge_channel_caches()
-    try:
-        print(process.communicate("exit()")[0])
-    except ValueError:
-        # Someone else already called communicate
-        pass
 
 
 def assert_types_are_equal(t_actual, t_expected, actual_value):
@@ -205,7 +165,6 @@ def _is_numpy_subclass(t):
 
 
 async def assert_monitor_then_put(
-    ioc,
     device: DeviceTestRecordsGroup,
     suffix: str,
     protocol: Protocol,
@@ -351,7 +310,6 @@ async def assert_backend_get_put_monitor(
     # With the given datatype, check we have the correct initial value and putting
     # works
     await assert_monitor_then_put(
-        ioc,
         device_test_records,
         suffix,
         protocol,
@@ -362,7 +320,6 @@ async def assert_backend_get_put_monitor(
     )
     # With datatype guessed from CA/PVA, check we can set it back to the initial value
     await assert_monitor_then_put(
-        ioc,
         device_test_records,
         suffix,
         protocol,
@@ -514,7 +471,7 @@ async def test_backend_get_put_monitor_pva(
 @PARAMETERISE_PROTOCOLS
 @pytest.mark.parametrize("suffix", ["bool", "bool_unnamed"])
 async def test_bool_conversion_of_enum(
-    ioc, suffix: str, tmp_path: Path, device_test_records, protocol
+    suffix: str, tmp_path: Path, ioc, device_test_records, protocol
 ) -> None:
     """Booleans are converted to Short Enumerations with values 0,1 as database does
     not support boolean natively.
@@ -526,7 +483,6 @@ async def test_bool_conversion_of_enum(
     # With the given datatype, check we have the correct initial value and putting
     # works
     await assert_monitor_then_put(
-        ioc,
         device_test_records,
         suffix,
         protocol,
@@ -537,7 +493,6 @@ async def test_bool_conversion_of_enum(
     )
     # With datatype guessed from CA/PVA, check we can set it back to the initial value
     await assert_monitor_then_put(
-        ioc,
         device_test_records,
         suffix,
         protocol,
