@@ -48,7 +48,7 @@ def make_ioc_from_templates(*templates: Template) -> subprocess.Popen[Any]:
     return process
 
 
-def create_ioc_fixture(*templates: Template, fixture_name: str | None):
+def create_ioc_fixture(*templates: Template, fixture_name: str | None = None):
     def make_ioc() -> subprocess.Popen[Any]:  # TODO fix the typing here
         process = make_ioc_from_templates(*templates)
         yield process
